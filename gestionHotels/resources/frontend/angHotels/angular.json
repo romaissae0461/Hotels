@@ -49,7 +49,6 @@
                 }
               ],
               "outputPath": "../../../public/assets/angular",
-              "deployUrl": "/assets/angular/",
               "outputHashing": "all"
             },
             "dev": {
@@ -70,9 +69,6 @@
             "production": {
               "buildTarget": "angHotels:build:production"
             },
-            "dev": {
-              "browserTarget": "angHotels:build:dev"
-          },
             "development": {
               "buildTarget": "angHotels:build:development"
             }
@@ -106,8 +102,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }
