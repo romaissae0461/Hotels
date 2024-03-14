@@ -111,14 +111,14 @@
       <form action="recherche.php" method="GET">
                 <div class="row">
                   <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                    <label for="checkin_date" class="font-weight-bold text-white">Check In</label>
+                    <label for="checkin_date" class="font-weight-bold text-white">Arrivée</label>
                     <div class="field-icon-wrap">
                       <div class="icon"><span class="icon-calendar"></span></div>
                       <input type="date" id="checkin_date" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                    <label for="checkout_date" class="font-weight-bold text-white">Check Out</label>
+                    <label for="checkout_date" class="font-weight-bold text-white">Départ</label>
                     <div class="field-icon-wrap">
                       <div class="icon"><span class="icon-calendar"></span></div>
                       <input type="date" id="checkout_date" class="form-control">
@@ -127,7 +127,7 @@
                   <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                     <div class="row">
                       <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="adults" class="font-weight-bold text-white">Adults</label>
+                        <label for="adults" class="font-weight-bold text-white">Adultes</label>
                         <div class="field-icon-wrap">
                           <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                             <select name="" id="adults" class="form-control">
@@ -139,7 +139,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="children" class="font-weight-bold text-white">Children</label>
+                        <label for="children" class="font-weight-bold text-white">Enfants</label>
                         <div class="field-icon-wrap">
                           <div class="icon">
                             <span class="ion-ios-arrow-down"></span>
@@ -153,7 +153,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 mb-3 mb-md-0">
-                        <label for="room" class="font-weight-bold text-white">Room</label>
+                        <label for="room" class="font-weight-bold text-white">Chambre</label>
                         <div class="field-icon-wrap">
                           <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                             <select name="" id="room" class="form-control">
@@ -252,7 +252,7 @@
               <div class="hotel-img">
                 <img src="{{asset('TheEvent/assets/img/hotels/3.jpg')}}" alt="Hotel 3" class="img-fluid">
               </div>
-              <h3><a href="hotel1">Hotel 3</a></h3>
+              <h3><a href="hotel1">Ghorfa</a></h3>
               <div class="stars">
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>

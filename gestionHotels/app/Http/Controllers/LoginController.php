@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Hash;
 class LoginController extends Controller
 {
     public function showForm(){
-        return view("log");
+        //return view("log");
+        return response()->json();
     }
     public function login(Request $request){
         $credentials=$request->only('email','password');
@@ -19,12 +20,15 @@ class LoginController extends Controller
             if($user->role=== 'admin'){
                 return redirect()->route('/admin');
             }elseif($user->role==='user'){
-                return redirect()->route('/');
+                //return redirect()->route('/');
+                return response()->json(['success'=>true]);
             }else{
-                return redirect()->route('');
+                //return redirect()->route('');
+                return response()->json();
             }
         }else{
-            return redirect()->back()->withErrors(['email'=>'Email or password incorrect']);
+            //return redirect()->back()->withErrors(['email'=>'Email or password incorrect']);
+            return response()->json(['fail'=>'Email ou mot de passe incorrect']);
         }
 
         
@@ -49,14 +53,17 @@ class LoginController extends Controller
         if ($user->role === 'admin') {
             return redirect()->route('/admin');
         } elseif ($user->role === 'user') {
-            return redirect()->route('/');
+            //return redirect()->route('/');
+            return response()->json(['success'=>true]);
         } else {
-            return redirect()->route('');
+            // return redirect()->route('');
+            return response()->json(['fail'=>'Vous ne pouvez pas vous inscrire']);
         }
         // return redirect()->route('login')->with('success','Votre  compte a bien été créé. Vous pouvez maintenant vous connecter');
     }
 
     public function create(){
-        return view('register');
+        //return view('register');
+        return response()->json();
     }
 }

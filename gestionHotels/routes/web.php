@@ -46,11 +46,11 @@ Route::get('/rooms', function () {
 });
 
 
-// Route::get('/index', [ClientController::class, 'index'])->name('clients/index');
-// Route::post('/index', [ClientController::class, 'index'])->name('clients/index');
+Route::get('/index', [ClientController::class, 'index'])->name('clients/index');
+Route::post('/index', [ClientController::class, 'index'])->name('clients/index');
 
-// Route::get('/index', [ClientController::class, 'index'])->name('clients/index');
-// Route::post('/index', [ClientController::class, 'index'])->name('clients/index');
+Route::get('/index', [ClientController::class, 'index'])->name('clients/index');
+Route::post('/index', [ClientController::class, 'index'])->name('clients/index');
 
 
 Route::get('/reservations', [ReservationController::class,'index'])->name('reservations.index');
@@ -64,9 +64,9 @@ Route::get('/contacts/create', [ContactController::class,'create'])->name('conta
 Route::post('/contacts/create', [ContactController::class,'create'])->name('contacts.create');
 Route::get('/contacts/store', [ContactController::class,'store'])->name('contacts.store');
 Route::post('/contacts/store', [ContactController::class,'store'])->name('contacts.store');
-//end contacts routes
+// end contacts routes
 
-//Client routes
+// Client routes
 Route::get('/index', [ClientController::class,'index'])->name('clients.index');
 Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
 Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
@@ -76,7 +76,7 @@ Route::get('/show/{id}', [ClientController::class,'show'])->name('clients.show')
 Route::delete('/delete/{id}', [ClientController::class,'delete'])->name('clients.delete');
 //End Client routes
 
-//Route::get('/index', [ClientController::class, 'index']);
+Route::get('/index', [ClientController::class, 'index']);
 
 Route::get('/register', [LoginController::class, 'register'])->name('login.register');
 Route::post('/register', [LoginController::class, 'create'])->name('login.create');
@@ -97,11 +97,11 @@ Route::get('/admin/offre', [Admin::class, 'offre'])->name('admin.offre');
 Route::get('/', [Admin::class, 'offres'])->name('admin.offres');
 
 
-//Route::resource('/clients','ClientController');
-//Route::resource('/reservations','ReservationController');
-//Route::resource('/rooms','RoomController');
-//Route::resource('/contacts','ContactController');
-//Route::resource('/managers','ManagerController');
+// Route::resource('/clients','ClientController');
+// Route::resource('/reservations','ReservationController');
+// Route::resource('/rooms','RoomController');
+// Route::resource('/contacts','ContactController');
+// Route::resource('/managers','ManagerController');
 // Route::group(['middleware'=>'auth'],function(){
 //     Route::get('/logout',[
 //         'uses'=>'ClientController@logout',

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="medium-12 columns">
+        <h4>Reservations</h4>
+        <div class="d-flex align-items-center justify-content-between small">
+            <a href="/create-r" class="btn btn-primary">Ajouter reservation</a>
+            <a href="/manager" class="btn btn-primary">Accueil</a>
+        </div>
+        <hr>
+        <table class="stack">
+            <thead>
+                <tr>
+                    <th width="200">id</th>
+                    <th width="200">Date de reservation</th>
+                    <th width="200">Date d'arrivée</th>
+                    <th width="200">Date de départ</th>
+                    <th width="200">Chambres</th>
+                    <th width="200">Personnes</th>
+                    <th width="200">Client Info</th>
+                    <th width="200">Num chambre</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let reservation  of reservations">
+                      <th scope="row">{{reservation.idReserv}}</th>
+                        <td>{{reservation.dateReserv}}</td>
+                        <td>{{reservation.dateArrivee}}</td>
+                        <td>{{reservation.dateDepart}}</td>
+                        <td>{{reservation.nbrChambre}}</td>
+                        <td>{{reservation.nbrPersonne}}</td>
+                        <td>{{reservation.idC}}</td>
+                        <td>{{reservation.id}}</td>
+
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

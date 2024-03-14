@@ -46,12 +46,13 @@ class Admin extends Controller
 
 
     public function offre(){
-        $offres = Hotel::select('image', 'nomH', 'nbrChambre', 'email', 'adresse', 'type_hotel_id')->get();
+        $offres = Hotel::select('imageH', 'nomH', 'nbrChambre', 'email', 'adresse', 'type_hotel_id')->get();
         return view ('Admins.offre', compact('offres'));
     }
 
     public function offres(){
-        $offres = Hotel::select('image', 'nomH', 'nbrChambre', 'email', 'adresse', 'type_hotel_id')->get();
+        $offres = Hotel::select('imageH', 'nomH', 'nbrChambre', 'email', 'adresse', 'type_hotel_id')->get();
         return view('welcome', compact('offres'));
     }
+    
 }

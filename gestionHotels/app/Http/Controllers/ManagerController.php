@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Chambre;
+use App\Models\Client;
+use App\Models\Contact;
 use App\Models\Manager;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -10,7 +14,28 @@ class ManagerController extends Controller
 {
     public function index(){
         $managers = Manager::all(); 
-        return view('managers.index', compact('managers'));
+        //return view('managers.index', compact('managers'));
+        return response()->json($managers);
+    }
+
+    public function manageClients(){
+        $client = Client::all();
+        return response()->json($client);
+    }
+
+    public function manageContacts(){
+        $contact = Contact::all();
+        return response()->json($contact);
+    }
+
+    public function manageRooms(){
+        $room = Chambre::all();
+        return response()->json($room);
+    }
+
+    public function manageReservations(){
+        $reservation = Reservation::all();
+        return response()->json($reservation);
     }
 
     public function create(){

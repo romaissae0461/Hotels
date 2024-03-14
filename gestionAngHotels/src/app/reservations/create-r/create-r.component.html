@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="medium-offset-4 medium-11 columns">
+        <h4>Formulaire de Reservation</h4>
+        <div class="mt-4">
+            <div *ngIf="successMessage" class="alert alert-success">
+                <h3>{{ successMessage }}</h3>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <ul>
+                    <li>{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <form method="post" action="/clients">
+                <input type="hidden" name="_method" value="put">
+                <hr> 
+                <div class="medium-4 columns">
+                    <label class="label info">Nom: </label>
+                    <input name="nom" type="text" [(ngModel)]="nom">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Prenom: </label>
+                    <input name="prenom" type="text" [(ngModel)]="prenom">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Email: </label>
+                    <input name="email" type="text" [(ngModel)]="email">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Date de reservation: </label>
+                    <input name="dateReserv" type="date" [(ngModel)]="dateReserv">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Date d'arrivée: </label>
+                    <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Date de départ: </label>
+                    <input name="dateDepart" type="date" [(ngModel)]="dateDepart">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Nombre de chambre: </label>
+                    <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Nombre de personne: </label>
+                    <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Numero de la chambre: </label>
+                    <select name="id" [(ngModel)]="id">
+                        <option value="">selectionnez une chambre</option>
+                        <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
+                    </select>
+                </div>
+
+
+
+                
+    <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
+    <a href="/home" class="btn btn-danger">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>

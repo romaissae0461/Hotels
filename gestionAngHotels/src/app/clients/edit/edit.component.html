@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="medium-offset-4 medium-11 columns">
+        <h4>Modification</h4>
+        <div class="mt-4">
+            <div *ngIf="successMessage" class="alert alert-success">
+                <h3>{{ successMessage }}</h3>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <ul>
+                    <li>{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <form (ngSubmit)="update(idC)" #form="ngForm">
+                <input type="hidden" name="_method" value="put">
+                <hr>
+                <div class="medium-4 columns">
+                    <label class="label info">Nom: </label>
+                    <input name="nomC" type="text" placeholder="Votre nom" [(ngModel)]="nomC">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Prénom: </label>
+                    <input name="prenom" type="text" placeholder="Votre prenom" [(ngModel)]="prenom">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Adresse: </label>
+                    <input name="adresse" type="text" placeholder="Votre adresse" [(ngModel)]="adresse">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Telephone: </label>
+                    <input name="telephone" type="text" placeholder="Votre numéro de telephone" [(ngModel)]="telephone">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Email: </label>
+                    <input name="email" type="email" placeholder="Votre adresse email" [(ngModel)]="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="votre email n/'est pas valide">
+                    <div *ngIf="form && form.controls['email'] && form.controls['email'].errors?.['pattern'] && form.controls['email'].touched" style="color: red; font-size: 14px;">Votre adresse email n'est pas valide</div>
+                </div>
+
+
+                
+    <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">Enregistrer</button>
+    <a href="/clients" class="btn btn-danger">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="mt-4">
+        <div *ngIf="successMessage" class="alert alert-success">
+            <h3>{{ successMessage }}</h3>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+            <ul>
+                <li>{{ errorMessage }}</li>
+            </ul>
+        </div>
+        <form method="post" action="/chambres">
+            <input type="hidden" name="_method" value="put">
+            <hr>
+            <div>
+                <label for="name">Votre nom: </label><br>
+                <input type="text" id="name" name="name" [(ngModel)]="name">
+            </div>
+            <br>
+            <div>
+                <label for="email">Votre email: </label><br>
+                <input type="text" id="email" name="email" [(ngModel)]="email">
+            </div>
+            <br>
+            <div> 
+                <label>Message:</label><br /><br>
+                <textarea name="message" id="" cols="30" rows="10" [(ngModel)]="message"></textarea>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" (click)="create()">Envoyer message</button>
+        </form>
+    </div>
+</div>

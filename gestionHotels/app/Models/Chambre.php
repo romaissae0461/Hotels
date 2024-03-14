@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Chambre extends Model
 {
     use HasFactory;
-    protected $fillable = ['numC', 'nbrLits', 'type_chambre_id', 'prixC', 'etage', 'status'];
+    //protected $primaryKey = 'id';
+    protected $fillable = ['image','numC', 'nbrLits', 'type_chambre_id', 'prixC', 'etage', 'status'];
 
     public function reservations(){
-        return $this->belongsTo(Reservation::class);
+        return $this->hasMany(Reservation::class);
     }
 }

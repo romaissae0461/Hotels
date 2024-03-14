@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="medium-12 columns">
+        <h4>Chambres</h4>
+        <div>
+            <a href="/create-c" class="btn btn-primary">Ajouter chambre</a>
+        </div>
+        <hr>
+        <table class="stack">
+            <thead>
+                <tr>
+                    <th width="200">id</th>
+                    <th width="200">Numéro</th>
+                    <th width="200">nombre de lit(s)</th>
+                    <th width="200">Type chambre</th>
+                    <th width="200">Prix</th>
+                    <th width="200">Etage</th>
+                    <th width="200">Status</th>
+                    <th width="200">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let chambre  of chambres">
+                      <th scope="row">{{chambre.id}}</th>
+                        <td>{{chambre.numC}}</td>
+                        <td>{{chambre.nbrLits}}</td>
+                        <td>{{chambre.type_chambre_id}}</td>
+                        <td>{{chambre.prixC}}</td>
+                        <td>{{chambre.etage}}</td>
+                        <td>{{chambre.status}}</td>
+                        <td>
+                            <a href="/edit-c/{{chambre.id}}" class="btn btn-primary">Modifier</a>
+                            <button class="btn btn-danger" (click)="delete(chambre.id)">Supprimer</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
