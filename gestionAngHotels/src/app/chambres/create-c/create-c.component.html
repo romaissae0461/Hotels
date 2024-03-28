@@ -37,7 +37,7 @@
                     <label>Type de chambre</label>
                     <select class="form-control" [(ngModel)]="type_chambre_id" name="type_chambre_id">
                         <option value="">Selectionne un type</option>
-                        <option *ngFor="let chambre of chambres" [value]="chambre.id">{{ chambre.typeC }}</option>                    
+                        <option *ngFor="let type of typeChambre" [value]="type.id">{{ type.typeC }}</option>                    
                     </select>
                 </div>
 

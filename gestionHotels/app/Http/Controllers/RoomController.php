@@ -20,7 +20,7 @@ class RoomController extends Controller
 
     public function roomType(){
         $typeC = TypeChambre::all();
-        return response()->json(['type_chambre_id'=>$typeC]);
+        return response()->json($typeC);
     }
 
     public function store(Request $request){

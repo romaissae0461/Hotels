@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Adjust the image size */
+        img {
+            width: 300px; 
+            height: auto;
+            display: block; 
+            margin: 0 auto; 
+        }
+        .room-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="medium-12 columns">
+            <h4>Chambres</h4>
+            <div class="d-flex align-items-center justify-content-center ">
+            </div>
+            <hr>
+            <!-- <div class="room-wrapper"> -->
+            <table class="stack">
+                <thead>
+                </thead>
+                <tbody>
+                        <tr *ngFor="let chambre  of chambres">
+                            <img src="{{chambre.image}}" alt="{{chambre.numC}}" class="img-fluid" width="200px" height="200px">
+                            <th scope="row"><strong><p>Chambre <ng-container *ngFor="let type of typeChambre">
+                                <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                            </ng-container></p></strong><br>
+                                <small>Numéro: {{chambre.numC}}</small> <br>
+                                <small>Nombre de lit(s): {{chambre.nbrLits}}</small>  <br>
+                                <!-- <small>Type chambre: 
+                                <ng-container *ngFor="let type of typeChambre">
+                                    <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                                </ng-container> </small>
+                                <br> -->
+                                <div *ngFor="let iconClass of chambre.infos.split(','); let i = index">
+                                    <i [ngClass]="iconClass"></i>
+                                </div>
+                                
+                                <small>Prix: {{chambre.prixC}} </small> <br>
+                                <small>Etage: {{chambre.etage}}</small> <br>
+                                <small>Status: 
+                                    <span *ngIf="chambre.status === 0">Réservée</span>
+                                    <span *ngIf="chambre.status === 1">Disponible</span>
+                                    <!-- {{chambre.status}} -->
+                                </small>  <br>
+                            <br>
+                                <!-- <a  href="/create-r" class="button">Réserver</a> -->
+                                <button href="/create-r" class="button" (click)="redirectToReservation(chambre.id)">Réserver</button>
+
+                            </th>
+                        </tr>
+                </tbody>
+            </table>
+        <!-- </div> -->
+        </div>
+    </div>
+    
+    
+    <div class="w3-row-padding w3-padding-16" *ngFor="let chambre  of chambres">
+        <div class="w3-third w3-margin-bottom">
+            <img src="{{chambre.image}}" alt="{{chambre.numC}}" width="200px" height="200px">
+            <div class="w3-container w3-white">
+            <h3>Single Room</h3>
+            <h6 class="w3-opacity">From $99</h6>
+            <p>Single bed</p>
+            <p>15m<sup>2</sup></p>
+            <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+            <button href="/create-r" class="button1" (click)="redirectToReservation(chambre.id)">Choose Room</button>
+
+        </div>
+        </div>
+        
+    </div>
+</body>
+</html>

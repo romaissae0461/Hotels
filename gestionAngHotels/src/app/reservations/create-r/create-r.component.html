@@ -1,7 +1,7 @@
 <div class="row">
     <div class="medium-offset-4 medium-11 columns">
-        <h4>Formulaire de Reservation</h4>
-        <div class="mt-4">
+        <h1>Formulaire de Reservation</h1>
+        <div class="d-flex align-item-center justify-content-center ">
             <div *ngIf="successMessage" class="alert alert-success">
                 <h3>{{ successMessage }}</h3>
             </div>
@@ -13,56 +13,50 @@
             <form method="post" action="/clients">
                 <input type="hidden" name="_method" value="put">
                 <hr> 
-                <div class="medium-4 columns">
-                    <label class="label info">Nom: </label>
+                <div class="d-flex align-item-center justify-content-between">
+                    <label class="label info">Nom: </label><br>
                     <input name="nom" type="text" [(ngModel)]="nom">
-                </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Prenom: </label>
+                
+                    <label class="label info">Prenom: </label><br>
                     <input name="prenom" type="text" [(ngModel)]="prenom">
                 </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Email: </label>
+<br>
+                <div class="">
+                    <label class="label info">Email: </label><br>
                     <input name="email" type="text" [(ngModel)]="email">
                 </div>
-
+<br>
                 <div class="medium-4 columns">
-                    <label class="label info">Date de reservation: </label>
+                    <label class="label info">Date de reservation: </label><br>
                     <input name="dateReserv" type="date" [(ngModel)]="dateReserv">
                 </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Date d'arrivée: </label>
+<br>
+                <div class="d-flex align-item-center justify-content-between ">
+                    <div>
+                    <label class="label info">Date d'arrivée: </label><br>
                     <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee">
-                </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Date de départ: </label>
+                    </div>
+                    <div>
+                    <label class="label info">Date de départ: </label><br>
                     <input name="dateDepart" type="date" [(ngModel)]="dateDepart">
+                    </div>
                 </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Nombre de chambre: </label>
+<br>
+                <div class="d-flex align-item-centre justify-content-between">
+                    <label class="label info">Nombre de chambre: </label> <br>
                     <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre">
-                </div>
-
-                <div class="medium-4 columns">
-                    <label class="label info">Nombre de personne: </label>
+                
+                    <label class="label info">Nombre de personne: </label><br>
                     <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne">
                 </div>
-
+<br>
                 <div class="medium-4 columns">
-                    <label class="label info">Numero de la chambre: </label>
-                    <select name="id" [(ngModel)]="id">
+                    <label class="label info">Numero de la chambre: </label><br>
+                    <select class="form-control" name="numC" [(ngModel)]="numC">
                         <option value="">selectionnez une chambre</option>
                         <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
                     </select>
                 </div>
-
-
-
                 
     <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
     <a href="/home" class="btn btn-danger">Annuler</a>

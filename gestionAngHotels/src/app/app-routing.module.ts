@@ -12,10 +12,13 @@ import { ContactClientComponent } from './contacts/contact-client/contact-client
 import { CreateRComponent } from './reservations/create-r/create-r.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { EditRComponent } from './reservations/edit-r/edit-r.component';
+import { PclientComponent } from './pageClient/pclient/pclient.component';
+import { RoomsComponent } from './pageClient/rooms/rooms.component';
 import { ClientPComponent } from './pageClient/client-p/client-p.component';
 
 const routes: Routes = [
-  {path: 'home', component:ClientPComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: 'home', component:PclientComponent},
   {path: 'clients', component: ClientComponent},
   {path: 'create', component:CreateComponent},
   {path: 'edit/:id', component: EditComponent},
@@ -27,7 +30,9 @@ const routes: Routes = [
   {path: 'manager', component:ManagerComponent},
   {path: 'contact/client', component:ContactClientComponent},
   {path: 'create-r', component:CreateRComponent},
-  {path: 'edit-r', component:EditRComponent}
+  {path: 'edit-r', component:EditRComponent},
+  {path: 'rooms', component:RoomsComponent},
+  {path: 'clientP', component:ClientPComponent}
 ];
 
 @NgModule({

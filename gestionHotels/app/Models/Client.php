@@ -16,9 +16,13 @@ class Client extends Authenticatable
     protected $primaryKey = 'idC';
     protected $fillable = ['nomC', 'prenom', 'adresse', 'telephone', 'email', 'password'] ;
 
-    //protected $hidden = ['password','remember_token'];//si y a un prblm elimine remember_token
+
 
     public function reservations(){
         return $this->hasMany(Reservation::class, 'id'); //'id' is the custom foreign key for the relationship between clients and reservations.
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
     }
 }

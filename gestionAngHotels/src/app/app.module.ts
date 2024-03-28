@@ -17,7 +17,10 @@ import { ContactClientComponent } from './contacts/contact-client/contact-client
 import { CreateRComponent } from './reservations/create-r/create-r.component';
 import { ReservationComponent } from './reservations/reservation/reservation.component';
 import { EditRComponent } from './reservations/edit-r/edit-r.component';
+import { PclientComponent } from './pageClient/pclient/pclient.component';
 import { ClientPComponent } from './pageClient/client-p/client-p.component';
+import { RoomsComponent } from './pageClient/rooms/rooms.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 
 
@@ -38,13 +41,17 @@ import { ClientPComponent } from './pageClient/client-p/client-p.component';
     ContactClientComponent,
     CreateRComponent,
     EditRComponent,
-    ClientPComponent
+    ClientPComponent,
+    PclientComponent,
+    RoomsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    FormsModule
+    FormsModule,
+    SlickCarouselModule,
+
   ],
   providers: [
     provideClientHydration()

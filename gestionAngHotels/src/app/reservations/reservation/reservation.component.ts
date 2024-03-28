@@ -22,6 +22,7 @@ export class ReservationComponent implements OnInit{
   errorMessage: any;
   csrfToken: any;
 
+  clients: any;
   reservations: any;
   constructor(private http:  HttpClient) {
 
@@ -40,6 +41,7 @@ export class ReservationComponent implements OnInit{
     })
   }
 
+  
   
 
 

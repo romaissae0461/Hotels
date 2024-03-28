@@ -20,13 +20,14 @@ export class CreateCComponent implements OnInit{
   errorMessage: any;
   csrfToken: any;
   chambres: any;
+  typeChambre: any;
 
   constructor(private http: HttpClient, private router: Router) { 
 
   }
   ngOnInit(): void {
     this.getChambres();
-    this.roomType();
+    this.getChambreType();
   }
 
   getChambres(){
@@ -43,12 +44,12 @@ export class CreateCComponent implements OnInit{
       console.log(response);
     })
   }
- 	
-  roomType(){
-    this.http.get<any>('http://localhost:8000/api/chambre/type')
+  getChambreType():void{
+    this.http.get('http://localhost:8000/api/chambre/type')
     .subscribe((response)=>{
-    this.chambres=response.type_chambre_id;}
-    );
+      console.log(response);
+      this.typeChambre = response;
+    })
   }
   create(){
     const chambre={

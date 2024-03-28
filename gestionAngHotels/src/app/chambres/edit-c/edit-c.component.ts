@@ -21,6 +21,8 @@ export class EditCComponent implements OnInit{
   id: number=0;
   chambres: any;
 
+  typeChambre: any;
+
   constructor(private http: HttpClient, private route: ActivatedRoute, private router:Router){}
   ngOnInit(): void {
      this.route.params.subscribe(params => {
@@ -52,11 +54,12 @@ export class EditCComponent implements OnInit{
     })
   }
   
-  roomType(){
-    this.http.get<any>('http://localhost:8000/api/chambre/type')
+  roomType(): void{
+    this.http.get('http://localhost:8000/api/chambre/type')
     .subscribe((response)=>{
-    this.chambres=response.type_chambre_id;}
-    );
+      console.log(response);
+      this.typeChambre = response;
+    })
   }
 
   update(id: number):void{

@@ -1,36 +1,32 @@
 <div class="container">
     <div class="medium-12 columns">
         <h4>Chambres</h4>
-        <div>
+        <div class="d-flex align-items-center justify-content-between small">
             <a href="/create-c" class="btn btn-primary">Ajouter chambre</a>
+            <a href="/manager" class="btn btn-primary">Accueil</a>
         </div>
         <hr>
         <table class="stack">
             <thead>
-                <tr>
-                    <th width="200">id</th>
-                    <th width="200">Numéro</th>
-                    <th width="200">nombre de lit(s)</th>
-                    <th width="200">Type chambre</th>
-                    <th width="200">Prix</th>
-                    <th width="200">Etage</th>
-                    <th width="200">Status</th>
-                    <th width="200">Options</th>
-                </tr>
             </thead>
             <tbody>
                     <tr *ngFor="let chambre  of chambres">
-                      <th scope="row">{{chambre.id}}</th>
-                        <td>{{chambre.numC}}</td>
-                        <td>{{chambre.nbrLits}}</td>
-                        <td>{{chambre.type_chambre_id}}</td>
-                        <td>{{chambre.prixC}}</td>
-                        <td>{{chambre.etage}}</td>
-                        <td>{{chambre.status}}</td>
-                        <td>
+                        <img src="{{chambre.image}}" alt="{{chambre.numC}}" class="img-fluid" width="200px" height="200px">
+                        <th scope="row"><strong><p> Numéro: {{chambre.numC}} </p></strong><br>
+                            <small>id Chambre: {{chambre.id}}</small> <br>
+                            <small>Nombre de lit(s): {{chambre.nbrLits}}</small>  <br>
+                            <small>Type chambre: 
+                            <ng-container *ngFor="let type of typeChambre">
+                                <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                            </ng-container> </small>
+                            <br>
+                            <small>Prix: {{chambre.prixC}} </small> <br>
+                            <small>Etage: {{chambre.etage}}</small> <br>
+                            <small>Status: {{chambre.status}}</small>  <br>
+                        
                             <a href="/edit-c/{{chambre.id}}" class="btn btn-primary">Modifier</a>
                             <button class="btn btn-danger" (click)="delete(chambre.id)">Supprimer</button>
-                        </td>
+                        </th>
                     </tr>
             </tbody>
         </table>

@@ -31,6 +31,10 @@ class ClientController extends Controller
         return response()->json();
     }
 
+    public function reservations(Client $client){
+        $reservations = $client->reservations()->get();
+        return response()->json($reservations);
+    }
 
     public function store(Request $request){
         $this->validate($request,[

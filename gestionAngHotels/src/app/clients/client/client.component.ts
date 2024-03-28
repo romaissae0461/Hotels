@@ -17,12 +17,17 @@ export class ClientComponent  implements OnInit {
   prenom: string="";
   email: string="";
 
+  reservations: any[]=[];
   
   constructor( private http: HttpClient, private route:ActivatedRoute){}
   title = 'gestionAngHotels';
 
   ngOnInit():void{
-    this.getClients()
+    this.getClients();
+    this.route.params.subscribe(params=>{
+      const idC=params['id'];
+      this.getReservation(idC);
+    })
   }
 
   getClients(){
@@ -57,6 +62,19 @@ export class ClientComponent  implements OnInit {
     )
   }
   
+  getReservation(id: number):void{
+    this.http.get<any>('http://localhost:8000/api/clients/${id}/reservation')
+    .subscribe((response: any)=>{
+      console.log(response);
+      if(Array.isArray(response.data)){
+        this.reservations = response.data;
+
+      }else{
+        this.reservations=response;
+      }
+      // this.reservations=response;
+    })
+  }
 
   ajouter(): void{
     const  client = {
@@ -80,7 +98,7 @@ export class ClientComponent  implements OnInit {
     .subscribe((resultData: any)=>{
       console.log('client supprimé!',resultData);
       this.getClients();
-      
+
     })
   }
   

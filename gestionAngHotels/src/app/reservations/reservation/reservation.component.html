@@ -27,7 +27,11 @@
                         <td>{{reservation.dateDepart}}</td>
                         <td>{{reservation.nbrChambre}}</td>
                         <td>{{reservation.nbrPersonne}}</td>
-                        <td>{{reservation.idC}}</td>
+                        <td>
+                            <ng-container *ngFor="let client of clients">
+                                <ng-container *ngIf="client.id === reservation.idC">{{ client.nomC }} - {{client.prenom}}</ng-container>
+                            </ng-container>
+                        </td>
                         <td>{{reservation.id}}</td>
 
                     </tr>

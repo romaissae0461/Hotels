@@ -6,6 +6,13 @@
     grid-gap: 20px;
     padding: 20px;
 }
+.magical-text {
+  font-family: "Pinyon Script", cursive; /* Example decorative font */
+  font-size: 36px; /* Adjust size as needed */
+  color: #6b6b6b; /* Adjust color to match */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
 
 .dashboard-card {
     background-color: #f9f9f9;
@@ -96,6 +103,32 @@
 .d-flex {
     display: flex !important;
   }
+
+  
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 60px 0;
+  z-index: 2;
+  -webkit-transition: .3s all ease-in-out;
+  -o-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out; }
+  .site-header.scrolled {
+    padding: 20px 0;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.1); }
+    .site-header.scrolled .site-menu-toggle {
+      top: 10px;
+      position: relative; }
+      .site-header.scrolled .site-menu-toggle span {
+        background: #000; }
+    .site-header.scrolled .site-logo {
+      position: relative;
+      z-index: 100; }
+      .site-header.scrolled .site-logo a {
+        color: #000; }
 
 
 
@@ -190,4 +223,181 @@
   .align-self-stretch {
     align-self: stretch !important;
   }
+
+
   
+  .display-topmiddle {
+    position: absolute;
+    left: 50%;
+    top: 100px;
+    transform: translate(-50%,0%);
+    -ms-transform: translate(-50%,0%)
+}
+
+.flex {
+  display: flex;
+}
+
+.flex_space {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.w3-color-burlywood{
+  background-color: burlywood;
+
+}
+.w3-color-chocolate{
+  background-color: chocolate;
+
+}
+.w3-color-coral{
+  background-color: coral;
+
+}
+.w3-color-darkgoldenrod{
+  background-color: darkgoldenrod;
+
+}
+.w3-color-goldenrod{
+  background-color:goldenrod;
+
+}
+.w3-color-gold{
+  background-color:gold;
+
+}
+.w3-color-my{
+  background-color: #cc9b3a;
+
+}
+.button {
+  background-color: #a7aa04;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button1 {
+  background-color: #cc9b3a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+  margin-right: auto; /* Pushes logo to the start */
+}
+
+.links {
+  margin-left: auto; /* Pushes links to the center */
+}
+
+.links a {
+  margin-right: 20px; /* Add space between links */
+}
+
+/* Styles for the header container */
+.header-container {
+  position: relative;
+}
+
+/* Styles for the slideshow */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+}
+
+/* Styles for the header content */
+.header-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1; /* Ensure content is above the slideshow */
+}
+
+.w3-display-topleft-custom {
+  position: absolute;
+  top: 0;
+  left: 200px; /* Adjust the left position as needed */
+  padding: 10px; /* Adjust padding as needed */
+  width: 250px; /* Adjust the width as needed */
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+}
+
+.w3-display-topleft-custom h2 {
+  margin: 0;
+  font-size: 16px; /* Adjust font size as needed */
+  color: #000; /* Change text color to improve readability */
+}
+
+.w3-container {
+  padding: 8px 0; /* Adjust top and bottom padding as needed */
+}
+
+.w3-row-padding {
+  margin: 20px 0; /* Adjust margin as needed */
+}
+
+.w3-half {
+  width: 50%; /* Make the half-width elements equal size */
+}
+
+.w3-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 700px; 
+  height: 30px;
+}
+
+.w3-dark-grey {
+  background-color: #0e0d0d; /* Change button color */
+  color: #fff;
+  padding: 8px 1; /* Adjust padding as needed */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.w3-dark-grey:hover {
+  background-color: #424242; /* Change button color on hover */
+}
+
+span.strans {
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  width: 198.19px;
+  display: inline-block;
+  color: darkslategrey; 
+  text-decoration: solid;
+}
