@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>W3.CSS Template</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .label{
+            font-family: "Open Sans", Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.125rem; font-weight: 500;
+            color: #351a09;
+        }
+        .button{
+            margin: 5px 205px ; background-color: #5A3520; color:white; border-radius: 12px; padding: 15px 29px; font-size: 16px;
+        }
+        .button3:hover{
+            background-color: #351A09;
+            color:white;
+        }
+        .btn{
+            background: none; border: none; cursor: pointer; margin-top: 20px; padding-left: 20px;
+        }
+        .fixed-image {
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    </head>
+    <body class="w3-white">
+<div class="d-flex align-content-between justify-content-between">
+    <div style="background-color: #F9E5CD; padding-right: 236px;">
+        <button class="btn" (click)="navigateToPage3()"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
+        <h1 style="color: #351A09; padding: 20px; padding-left: 45px;">Occasion spéciale</h1>
+        <form method="post" action="/clients" style="padding: 0px 30px;">
+            <input type="hidden" name="_method" value="put">
+            <div class="" style="margin: 10px;">
+                <label class="label info">Avez-vous une occasion spéciale pour votre séjour à l'hôtel ? </label><br><br>
+                <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                <input type="radio" id="anniversaire" name="occasion" value="anniversaire">
+                <label for="anniversaire" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Anniversaire</label><br>
+                </div>
+                <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                    <input type="radio" id="honeymoon" name="occasion" value="honeymoon">
+                    <label for="honeymoon" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Voyage de noces</label><br>
+                </div>
+                <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                    <input type="radio" id="fete" name="occasion" value="fete">
+                    <label for="fete" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Fête</label><br>
+                </div>
+                <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                    <input type="radio" id="non" name="occasion" value="non">
+                    <label for="non" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Aucune Occasion spéciale</label><br>
+                </div>
+            </div>
+<br>
+            <div class="" style="margin: 10px;">
+                <label class="label info">Détails supplémentaires </label><br><br>
+                <textarea name="détails" id="" cols="30" rows="10" placeholder="" style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px; font-weight: 600; font-size: 18px; margin-bottom: 10px;"></textarea>
+            </div>
+            </form>
+        <button class="button button3">Suivant <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <div class="fixed-image">
+        <img src="../assets/luna/reserver.jpeg" alt="" width="570px" height="640px">
+    </div>
+</div>
+
+</body>
+</html>

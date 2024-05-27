@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="medium-offset-4 medium-11 columns">
+        <h4>Ajout d'une nouvelle chambre</h4>
+        <div class="mt-4">
+            <div *ngIf="successMessage" class="alert alert-success">
+                <h3>{{ successMessage }}</h3>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <ul>
+                    <li>{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <form method="post" action="/chambres">
+                <input type="hidden" name="_method" value="put">
+                <hr>
+                <div class="medium-4 columns">
+                    <label class="label info">Numéro: </label>
+                    <input name="numC" type="text" [(ngModel)]="numC">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Nombre Lits: </label>
+                    <input name="nbrLits" type="text" [(ngModel)]="nbrLits">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Prix: </label>
+                    <input name="prixC" type="text" [(ngModel)]="prixC">
+                </div>
+
+                <div class="medium-4 columns">
+                    <label class="label info">Etage: </label>
+                    <input name="etage" type="text" [(ngModel)]="etage">
+                </div>
+
+                <div class="mb-3">
+                    <label>Type de chambre</label>
+                    <select class="form-control" [(ngModel)]="type_chambre_id" name="type_chambre_id">
+                        <option value="">Selectionne un type</option>
+                        <option *ngFor="let type of typeChambre" [value]="type.id">{{ type.typeC }}</option>                    
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label>Status</label>
+                    <input name="status" type="text" [(ngModel)]="status">
+                </div>
+                <div class="mb-3">
+                    <label>Image de la chambre</label>
+                    <input type="file" name="image" (change)="onFileChange($event)">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" (click)="create()">Enregistrer</button>
+                <a href="/chambres" class="btn btn-danger">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div>

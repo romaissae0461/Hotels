@@ -1,0 +1,8 @@
+<div>
+    <h2>Reset Password</h2>
+    <input type="email" [(ngModel)]="email" placeholder="Enter your email" [value]="email" readonly>
+    <input type="password" [(ngModel)]="password" placeholder="Enter new password">
+    <input type="password" [(ngModel)]="password_confirmation" placeholder="Confirm new password">
+    <button (click)="resetPassword()">Reset Password</button>
+  </div>
+  

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>W3.CSS Template</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .label{
+            font-family: "Open Sans", Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.125rem; font-weight: 500;
+            color: #351a09;
+        }
+        .button{
+            margin: 5px 205px ; background-color: #5A3520; color:white; border-radius: 12px; padding: 15px 29px; font-size: 16px;
+        }
+        .button3:hover{
+            background-color: #351A09;
+            color:white;
+        }
+        .btn{
+            background: none; border: none; cursor: pointer; margin-top: 20px; padding-left: 20px;
+        }
+        .fixed-image {
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+    </style>
+    </head>
+    <body class="w3-white">
+        <div *ngIf="step === 1">
+            <div class="d-flex align-content-between justify-content-between" style="position: fixed;">
+                <div style="background-color: #F9E5CD; padding-right: 100px;">
+                    <h1 style="color: #351A09; text-align: center; padding: 20px; padding-left: 45px; padding-top: 200px;">Réservez votre chambre d'hôtel dès maintenant !</h1>
+                    <p style="color: gray; text-align: center; padding-left: 45px;">Remplissez simplement ce formulaire pour effectuer votre réservation</p>
+                    <button  class="button button3" (click)="navigateToNextStep()">Demande de réservation</button>
+                </div>
+                <div>
+                    <img src="../assets/luna/reserver.jpeg" alt="" width="550px" height="642px">
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="step === 2">
+            <div class="d-flex align-content-between justify-content-between" style="position: fixed;">
+                <div style="background-color: #F9E5CD; padding-right: 255px;">
+                    <button class="btn" (click)="navigateToPreviousStep()"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
+                    <h2 style="color: #351A09; padding: 20px; padding-left: 45px; padding-top: 50px;"><strong>Vos Informations</strong></h2>
+            
+                    <form style="padding: 0px 30px;">
+                        <input type="hidden" name="_method" value="put">
+                        <div class="" style="margin: 10px;">
+                            <input name="nom" type="text" [(ngModel)]="nom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Nom">
+                        </div>
+            <br>
+                        <div class="" style="margin: 10px;">
+                            <input name="prenom" type="text" [(ngModel)]="prenom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Prénom">
+                        </div>
+            <br>
+                        <div class="" style="margin: 10px;">
+                            <input name="email" type="text" [(ngModel)]="email" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 16px 12px; border-color: #47220d33; padding-right: 87%; font-size:20px" class='fa fa-envelope' placeholder="&#xf0e0; Email">
+                        </div>
+                        </form><br>
+                    <button  class="button button3" (click)="navigateToNextStep()">Suivant <i class="fa fa-arrow-right"></i></button>
+                </div>
+                <div>
+                    <img src="../assets/luna/reserver.jpeg" alt="" width="565px" height="640px">
+                </div>
+            </div>
+                </div>
+        
+
+        <div *ngIf="step === 3">
+            <div class="d-flex align-content-between justify-content-between">
+                <div style="background-color: #F9E5CD; padding-right: 236px;">
+                    <button class="btn" (click)="navigateToPreviousStep()"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
+                    <h1 style="color: #351A09; padding: 20px; padding-left: 45px;">Détails de Réservation</h1>
+            
+                    <form method="post" action="/clients" style="padding: 0px 30px;">
+                        <input type="hidden" name="_method" value="put">
+                        <div class="" style="margin: 10px;">
+                            <label class="label info">Date d'Arrivée </label><br>
+                            <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 90%;">
+                        </div>
+            <br>
+                        <div class="" style="margin: 10px;">
+                            <label class="label info">Date de Départ </label><br>
+                            <input name="dateDepart" type="date" [(ngModel)]="dateDepart" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 90%;">
+                        </div>
+            <br>
+                        
+                        <div class="" style="margin: 10px;">
+                            <input name="nbrChambre" type="text" [(ngModel)]="nbrPersonne" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 78%;" placeholder="Nombre de Personnes">
+                        </div><br>
+                        <div class="" style="margin: 10px;">
+                            <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; border-color: #47220d33; padding-right: 78%;" placeholder="Nombre de Chambres">
+                        </div>
+                       <br>
+                       
+                        <div class="" style="margin: 10px;">
+                            <label class="label info">Type de chambre</label><br>
+                            <div *ngFor="let type of typeChambre" style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                            <input type="radio" name="type_chambre_id" [(ngModel)]="type_chambre_id" [value]="type.id" (click)="getChambreByType(type.id)">
+                            <label style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;"> {{type.typeC}}</label>
+                            </div>
+                        </div>
+                        </form>
+                    <button class="button button3" (click)="navigateToNextStep()">Suivant <i class="fa fa-arrow-right"></i></button>
+                </div>
+                <div class="fixed-image">
+                    <img src="../assets/luna/reserver.jpeg" alt="" width="570px" height="640px">
+                </div>
+            </div>
+                </div>
+        
+
+        <div *ngIf="step === 4">
+            <div class="d-flex align-content-between justify-content-between">
+                <div style="background-color: #F9E5CD; padding-right: 236px;">
+                    <button class="btn" (click)="navigateToPreviousStep()"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
+                    <h1 style="color: #351A09; padding: 20px; padding-left: 45px;">Souhaitez-vous des services supplémentaires?</h1>
+                    <form method="post" action="/clients" style="padding: 0px 30px;">
+                        <input type="hidden" name="_method" value="put">
+                        <div class="" style="margin: 10px;">
+                            <label class="label info">(petit-déjeuner, blanchisserie, etc.)</label><br><br>
+                            
+                                <!-- <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                                <input type="radio" id="oui" name="oui" value="oui" (change)="showAdditionalServices($event)">
+                                <label for="oui" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Oui</label><br>
+                                </div>
+                                <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                                    <input type="radio" id="non" name="non" value="non" (change)="hideAdditionalServices()">
+                                    <label for="non" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">Non</label><br>
+                                </div> -->
+                                <mat-radio-group aria-label="Select an option">
+                                    <div class="d-flex align-content-between">
+                                        <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                                            <mat-radio-button value="1" (change)="showAdditionalServices($event)">Oui</mat-radio-button>
+                                        </div>
+                                        <div style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                                            <mat-radio-button value="2" (change)="hideAdditionalServices()">Non</mat-radio-button>
+                                        </div>
+                                    </div>
+                                </mat-radio-group>
+                            
+                        <div *ngIf="showAdditionalService">
+                            <div *ngIf="services && services.length > 0" class="d-flex align-content-between">
+
+                            <div class="d-flex align-content-between">
+                                <div *ngFor="let service of services" style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px;">
+                                    <input type="checkbox" id="{{service.id}}" name="{{service.nomS}}" value="{{service.id}}">
+                                    <label for="{{service.id}}" style="font-weight: bold; font-size: 18px; color: #351A09; margin-bottom: 10px;">{{service.nomS}} - {{service.prixS}} Dhs</label><br>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                            
+                        </div>
+            <br>
+                        <div class="" style="margin: 10px;">
+                            <label class="label info">Détails supplémentaires </label><br><br>
+                            <textarea name="détails" id="" cols="30" rows="10" placeholder="" style="margin-right: 10px; margin-bottom: 10px; font-size: 16px; margin-left: 5px; color: #5A3520; background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 14px 12px; padding-right: 50px; font-weight: 600; font-size: 18px; margin-bottom: 10px;"></textarea>
+                        </div>
+                        </form>
+                    <button class="button button3" (click)="store()">Suivant <i class="fa fa-arrow-right"></i></button>
+                </div>
+                <div class="fixed-image">
+                    <img src="../assets/luna/reserver.jpeg" alt="" width="570px" height="640px">
+                </div>
+            </div>        
+        </div>
+
+
+        <div *ngIf="step===5">
+
+        </div>
+
+</body>
+</html>

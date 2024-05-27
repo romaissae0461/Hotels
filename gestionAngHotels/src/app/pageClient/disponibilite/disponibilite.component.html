@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>W3.CSS Template</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .firstB{
+                background-color: white;
+                padding-top: 10px;
+            }
+            .secondB{
+                background-color: rgb(248, 233, 214);
+            }
+        </style>
+    </head>
+    <body class="w3-white">
+            <div >
+                <h4>Chambres Disponibles</h4>
+                <hr>
+                <div *ngFor="let chambre  of availableRooms; let i=index" [ngClass]="{'firstB': i%2==0, 'secondB': i%2!=0}">
+                    <div class="d-flex align-content-between justify-content-between">
+                        <div style="margin-right: 0px;">
+                                <img src="{{chambre.image}}" alt="{{chambre.numC}}" width="600px" height="400px" style="padding-top: 25px;"></div>
+                                <div  style="padding-right: 570px; padding-top: 80px; padding-bottom: 10%;" width="800px" height="500px">
+                                <div scope="row"><strong><p> Numéro: {{chambre.numC}} </p></strong><br>
+                                    <strong>Chambre 
+                                        <ng-container *ngIf="nbrPersonne === 1 && nbrChambre === 1">
+                                            <ng-container *ngIf="chambre.type_chambre_id === 1">Single</ng-container>
+                                        </ng-container>
+                                        <ng-container *ngIf="nbrPersonne > 1 && nbrChambre === 1">
+                                            <ng-container *ngIf="chambre.type_chambre_id === 2">Double</ng-container>
+                                        </ng-container>
+                                        <ng-container *ngIf="nbrPersonne > 1 || nbrChambre > 1">
+                                            <ng-container *ngIf="chambre.type_chambre_id === 6">Standard</ng-container>
+                                            <ng-container *ngIf="chambre.type_chambre_id === 8">Standard</ng-container>
+                                        </ng-container>
+                                    </strong> <br>
+                                    <small>Nombre de lit(s): {{chambre.nbrLits}}</small>  <br>
+                                    <small>Type chambre: 
+                                    <ng-container *ngFor="let type of typeChambre">
+                                        <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                                    </ng-container> </small>
+                                    <br>
+                                    <small>Prix: {{chambre.prixC}} </small> <br>
+                                    <small>Etage: {{chambre.etage}}</small> <br>
+                                    <small>Status: {{chambre.status}}</small>  <br>
+                                
+                                </div></div>
+                        </div>
+            </div>
+        </div>
+        </body>
+        </html>
+
+
+
