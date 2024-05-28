@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>W3.CSS Template</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+        .label{
+            font-family: "Open Sans", Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.125rem; font-weight: 500;
+            color: #351a09;
+        }
+        .button{
+            margin: 5px 205px ; background-color: #5A3520; color:white; border-radius: 12px; padding: 15px 29px; font-size: 16px;
+        }
+        .button3:hover{
+            background-color: #351A09;
+            color:white;
+        }
+        .btn{
+            background: none; border: none; cursor: pointer; margin-top: 20px; padding-left: 20px;
+        }
+    </style>
+    </head>
+    <body class="w3-white">
+
+<div class="d-flex align-content-between justify-content-between" style="position: fixed;">
+    <div style="background-color: #F9E5CD; padding-right: 255px;">
+        <button class="btn" (click)="navigateToPage1()"><i class='fa fa-arrow-circle-left' style='font-size:28px;color:#5A3520'></i></button>
+        <h2 style="color: #351A09; padding: 20px; padding-left: 45px; padding-top: 50px;"><strong>Vos Informations</strong></h2>
+
+        <form method="post" action="/clients" style="padding: 0px 30px;">
+            <input type="hidden" name="_method" value="put">
+            <div class="" style="margin: 10px;">
+                <input name="nom" type="text" [(ngModel)]="nom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Nom">
+            </div>
+<br>
+            <div class="" style="margin: 10px;">
+                <input name="prenom" type="text" [(ngModel)]="prenom" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 15px 12px; border-color: #47220d33; padding-right: 90%;" placeholder="Prénom">
+            </div>
+<br>
+            <div class="" style="margin: 10px;">
+                <input name="email" type="text" [(ngModel)]="email" style="background-color: #fbf0e1; border: 1px solid; border-radius: 8px; padding: 16px 12px; border-color: #47220d33; padding-right: 87%; font-size:20px" class='fa fa-envelope' placeholder="&#xf0e0; Email">
+            </div>
+            </form><br>
+        <button  class="button button3" (click)="navigateToPage3()">Suivant <i class="fa fa-arrow-right"></i></button>
+    </div>
+    <div>
+        <img src="../assets/luna/reserver.jpeg" alt="" width="565px" height="640px">
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="medium-offset-4 medium-11 columns">
+        <h1>Formulaire de Reservation</h1>
+        <div class="d-flex align-item-center justify-content-center ">
+            <div *ngIf="successMessage" class="alert alert-success">
+                <h3>{{ successMessage }}</h3>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">
+                <ul>
+                    <li>{{ errorMessage }}</li>
+                </ul>
+            </div>
+            <form method="post" action="/clients">
+                <input type="hidden" name="_method" value="put">
+                <hr> 
+                <div class="d-flex align-item-center justify-content-between">
+                    <label class="label info">Nom: </label><br>
+                    <input name="nom" type="text" [(ngModel)]="nom">
+                
+                    <label class="label info">Prenom: </label><br>
+                    <input name="prenom" type="text" [(ngModel)]="prenom">
+                </div>
+<br>
+                <div class="">
+                    <label class="label info">Email: </label><br>
+                    <input name="email" type="text" [(ngModel)]="email">
+                </div>
+<br>
+                <div class="medium-4 columns">
+                    <label class="label info">Date de reservation: </label><br>
+                    <input name="dateReserv" type="date" [(ngModel)]="dateReserv">
+                </div>
+<br>
+                <div class="d-flex align-item-center justify-content-between ">
+                    <div>
+                    <label class="label info">Date d'arrivée: </label><br>
+                    <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee">
+                    </div>
+                    <div>
+                    <label class="label info">Date de départ: </label><br>
+                    <input name="dateDepart" type="date" [(ngModel)]="dateDepart">
+                    </div>
+                </div>
+<br>
+                <div class="d-flex align-item-centre justify-content-between">
+                    <label class="label info">Nombre de chambre: </label> <br>
+                    <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre">
+                
+                    <label class="label info">Nombre de personne: </label><br>
+                    <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne">
+                </div>
+<br>
+                <div class="medium-4 columns">
+                    <label class="label info">Numero de la chambre: </label><br>
+                    <select class="form-control" name="numC" [(ngModel)]="numC">
+                        <option value="">selectionnez une chambre</option>
+                        <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
+                    </select>
+                </div>
+                <input type="text" name="id" [(ngModel)]="id">
+                <input type="text" name="idC" [(ngModel)]="idC">
+                
+    <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
+    <a href="/home" class="btn btn-danger">Annuler</a>
+            </form>
+        </div>
+    </div>
+</div> -->
+</body>
+</html>

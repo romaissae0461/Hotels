@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>W3.CSS Template</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("../assets/luna/luna5.jpg");
+  width: 1400px;
+  height: 640px;
+  padding-left: 0px;
+  padding-top: 0px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1367px 640px;
+  background-attachment: fixed;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  left: 0;
+  margin: 20px;
+  max-width: 500px;
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #5A3520;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-img">
+  <form action="/action_page.php" class="container">
+    
+    <div class="d-flex align-content-center justify-content-center">
+        <img src="../assets/luna/del_luna_logo.jpeg" style="width: 20%; ">
+        <h1>S'inscrire</h1></div>
+        <div style="margin-left: 25%;">
+        Vous avez déjà un compte?<a href="/login"> Se connecter</a> <br><br></div>
+
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" [(ngModel)]="name" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="exemple@gmail.com">
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="password" required>
+
+    <!-- <label for="confirmer"><b>Confirm Password</b></label>
+<input type="password" placeholder="Confirmer Password" name="confirmer" [(ngModel)]="confirmer" required> -->
+
+    <button type="submit" class="btn" (click)="register()">S'inscrire</button>
+  </form>
+</div>
+
+</body>
+</html>

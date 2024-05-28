@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        img {
+            width: 300px; 
+            height: auto;
+            display: block; 
+            margin: 0 auto; 
+        }
+        .room-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            align-items: flex-start;
+        }
+        ul {
+          padding: 0;
+          list-style: none;
+      }
+      li {
+          border: 3px solid #cc9b3a; 
+          margin-bottom: 20px; 
+          padding: 20px; 
+          box-sizing: border-box; 
+      }
+    </style>
+</head>
+<body class="w3-white">
+    <div class="navbar-container d-flex justify-content-center">
+        <div class="logo d-flex">
+            <img src="../assets/imag/Del_Luna_Hotel.png" alt="" width="200px" height="60px">
+        </div>
+        <div class="links d-flex">
+          <a href="/rooms" class="w3-bar-item w3-button w3-mobile">Chambres</a>
+          <a href="#about" class="w3-bar-item w3-button w3-mobile">About</a>
+          <a href="/services" class="w3-bar-item w3-button w3-mobile">Services</a>
+          <a href="/plans" class="w3-bar-item w3-button w3-mobile">Bons Plans</a>
+          <a href="/contact/client" class="w3-bar-item w3-button w3-mobile">Contact</a>
+      </div>
+            <a href="/createReserv" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Réserver</a>
+        
+    </div>
+    <div class="container">
+        <div class="medium-12 columns">
+            
+            <hr>
+            <!-- <div class="room-wrapper"> -->
+            <table class="stack">
+                <thead>
+                </thead>
+                <tbody>
+                    
+      <div class="containers-fluid rooms">
+        <div class="containers">
+          <div class="row">
+            <div class="col-xs-12">
+              <img src="../assets/luna/star0.avif" width="10px">
+              <h1 class="heading-text text-center">Réserver une chambre</h1>
+              <!-- <img src="../assets/luna/stars1.webp" alt="" width="5%"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="containers rooms" *ngFor="let chambre of chambres">
+        <div class="container-fluid blocks transition">
+          <div class="row">
+              <div class="col bg-trans bg-trans-left text-center">
+                  <div class="row">
+                    <div class="heading-text text-left"  style="background-image: url(../assets/luna/star0.avif); background-size: 50px; background-repeat: no-repeat;">
+                      <strong><ng-container *ngFor="let type of typeChambre">
+                        <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                        </ng-container></strong></div>
+                  </div>
+                  <div class="">
+                    <div class="text text-left">
+                    
+                      <span *ngIf="chambre.nbrLits == 1">{{chambre.nbrLits}} lit</span>
+                      <span *ngIf="chambre.nbrLits == 2">{{chambre.nbrLits}} lits</span>
+                      
+                    </div>
+                    <div>
+                      <p class="text-left text">{{chambre.infos}}</p>
+                      <small>Status: 
+                        <span *ngIf="chambre.status === 0" style="color: red;">Réservée</span>
+                        <span *ngIf="chambre.status === 1" style="color: green;">Disponible</span></small>
+                    </div>
+                  </div>
+                  <div class="row link-block">
+                    <a  style="margin-right: 10px;" class="btn link res" (click)="redirectToInfosRoom(chambre.id)">Plus d'informations</a>
+                    <!-- a href="/clientP" me dirige 2 fois a la meme page mais avec une erreur de ../chambre/type/undefined -->
+                    <button href="/create-r" style="background-color: white;" class="btn link res" (click)="redirectToReservation(chambre.id)">Réserver</button>
+                </div>
+              </div>
+              <div class="col">
+                <img src="{{chambre.image}}" alt="" style="width: 100%; height: 100%;">
+                <span class="thumb-zoom">&nbsp;</span>
+              </div>
+          </div>
+        </div>
+      </div>
+                    <!-- <section>
+                        <ul class="" *ngFor="let chambre of chambres">
+                          <li>
+                            <picture data-aos="fade-left" class="aos-init aos-animate">
+                              <img src="{{chambre.image}}" alt="" style="width: 30%; height: auto;">
+                            </picture>
+                            <div class="cont-text aos-init aos-animate" data-aos="fade-right">
+                              <div class="text"><strong>Chambre <ng-container *ngFor="let type of typeChambre">
+                                <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
+                                </ng-container></strong>
+                                <br>
+                                Numéro: {{chambre.numC}} <br>
+                                Nombre de lit(s): {{chambre.nbrLits}} <br>
+                                
+                                    <div *ngFor="let iconClass of chambre.infos.split(','); let i = index">
+                                        <i [ngClass]="iconClass"></i>
+                                    </div>
+                                <br>
+                                <h6 class="w3-opacity">Prix: {{chambre.prixC}} Dhs</h6><br>
+                                Etage: 
+                                <span *ngIf="chambre.etage== 0">Rez de chaussée</span>
+                                <span *ngIf="chambre.etage == 1">Premier étage</span>
+                                <span *ngIf="chambre.etage == 2">Deuxième étage</span>
+                                <span *ngIf="chambre.etage == 3">Troisième étage</span>
+                                <span *ngIf="chambre.etage == 4">Quatrième étage</span>
+                                <br>
+                                Status: 
+                                    <span *ngIf="chambre.status === 0">Réservée</span>
+                                    <span *ngIf="chambre.status === 1">Disponible</span>
+                                    </div>
+                            </div>
+                            <button href="/create-r" class="button" (click)="redirectToReservation(chambre.id)">Réserver</button>
+
+                          </li>
+                          
+                        </ul>
+                    </section> -->
+                   </tbody> 
+            </table>
+        <!-- </div> -->
+        </div>
+    </div>
+     <!-- Footer -->
+     <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+      <div class="row align-content-between justify-content-between">
+          <div class="block" style="font-style: normal; font-family: 'Times New Roman', Times, serif;">
+              <h3>A propos de nous</h3>
+              <p>Hôtel Del Luna est un hôtel 5 étoiles, situé au Maroc, à la ville de fes</p>
+          </div>
+          <div><h5>Find Us On</h5>
+          <div class="w3-xlarge w3-padding-16">
+              <i class="fa fa-facebook-official w3-hover-opacity"></i>
+              <i class="fa fa-instagram w3-hover-opacity"></i>
+              <i class="fa fa-snapchat w3-hover-opacity"></i>
+              <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+              <i class="fa fa-twitter w3-hover-opacity"></i>
+              <i class="fa fa-linkedin w3-hover-opacity"></i>
+          </div></div>
+          <div>
+              <h5>Contactez-nous</h5>
+              <p><i class="fa fa-map-marker">hote32 57 rte ain chkaf, FES - Maroc</i></p>
+              <p><i class="fa fa-phone"></i> Phone: +212 6555555</p>
+              <p><i class="fa fa-envelope"></i>Email: hotel.DelLuna&#64;gmail.com</p>
+          </div>
+      </div>
+      <p>Powered by <a href="hajz" target="_blank" class="w3-hover-text-green">HAJZ.com</a></p>
+  </footer>
+
+
+</body>
+</html>

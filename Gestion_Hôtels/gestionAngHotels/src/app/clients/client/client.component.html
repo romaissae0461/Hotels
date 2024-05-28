@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="medium-12 columns">
+        <h4>Clients</h4>
+        <div class="d-flex align-items-center justify-content-between small">
+            <a href="/create" class="btn btn-primary">Ajouter Client</a>
+            <a href="/manager" class="btn btn-primary">Accueil</a>
+
+        </div>
+        <hr>
+        <table class="stack">
+            <thead>
+                <tr>
+                    <th width="200">id</th>
+                    <th width="200">Nom</th>
+                    <th width="200">Prénom</th>
+                    <th width="200">Email</th>
+                    <th width="200">Reservations</th>
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let client  of clients">
+                      <th scope="row">{{client.idC}}</th>
+                        <td>{{client.nomC}}</td>
+                        <td>{{client.prenom}}</td>
+                        <td>{{client.email}}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="getReservation(client.idC)">Voir Réservations</button>
+                        </td>
+                        <td>
+                            <a href="/edit/{{client.idC}}" class="btn btn-primary">Modifier</a>
+                            <button class="btn btn-danger" (click)="delete(client.idC)">Supprimer</button>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
