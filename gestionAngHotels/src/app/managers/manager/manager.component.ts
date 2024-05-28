@@ -21,16 +21,6 @@ import Chart from 'chart.js/auto'
   host: {ngSkipHydration: 'true'},
 })
 export class ManagerComponent implements OnInit {
-  totalClients: number=100;
-  totalReservations: number=70;
-  recentActivities: string[]=['Ajouter client', 'Créer Reservation', 'Modifier Reservation'];
-
-  home = faHome;
-chart = faChartBar;
-message = faComment;
-bookmark = faBookmark;
-user = faUser;
- 
 
 totalBooking: number = 1245;
   availableRooms: number = 287;
@@ -40,8 +30,30 @@ enquiries: any;
 collections: any;
 bookings: any;
  title: string='';
+  
+clients: any;
+user: any;
 
- 
+ reservations: any[] = [
+    {
+      name: 'Romaissae Errachdi',
+      checkIn: '2024-06-01',
+      checkOut: '2024-06-05',
+      status: 'Confirmed',
+      phone: '1234567890',
+      roomType: 'Single',
+      
+    },
+    {
+      name: 'Israe Errachdi',
+      checkIn: '2024-06-03',
+      checkOut: '2024-06-08',
+      status: 'Pending',
+      phone: '0987654321',
+      roomType: 'Double',
+      
+    },
+  ];
   constructor(private http: HttpClient){
 
   }
@@ -105,5 +117,6 @@ bookings: any;
       };
     })
   );
-  
+ 
+
 }

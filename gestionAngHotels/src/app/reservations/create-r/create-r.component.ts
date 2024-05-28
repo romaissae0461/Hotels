@@ -5,7 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-create-r',
   templateUrl: './create-r.component.html',
-  styleUrl: './create-r.component.css'
+  styleUrl: './create-r.component.css',
+  host: {ngSkipHydration: 'true'},
+
 })
 export class CreateRComponent  implements OnInit{
 
@@ -43,6 +45,7 @@ export class CreateRComponent  implements OnInit{
     // });
   }
 
+  
   reservation(){
     this.http.get<any>('http://localhost:8000/api/reservation')
     .subscribe((response)=>
