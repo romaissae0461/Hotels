@@ -18,7 +18,7 @@ class TypeChambreSeeder extends Seeder
             ["typeC"=>"single"],
             ["typeC"=>"double"],
             ["typeC"=>"suite"],
-            ["typeC"=>"deluxe"],
+            ["typeC"=>"Deluxe"],
             ["typeC"=>"twin"],
             ["typeC"=>"standard"],
             ["typeC"=>"studio"],

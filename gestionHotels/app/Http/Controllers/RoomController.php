@@ -27,15 +27,15 @@ class RoomController extends Controller
         return response()->json($typeC);
     }
 
-    public function getRoomsByType($typeId){
-        $rooms = Chambre::where('type_chambre_id', $typeId)->get();
+    public function getRoomsByType($id){
+        $rooms = Chambre::where('type_chambre_id', $id)->get();
         return response()->json($rooms);
     }
     
 
     public function store(Request $request){
         $this->validate($request,[
-            'image'=>'string',
+            'image'=>'image|mimes:jpeg,png,jpg,gif|max:2048',
             'numC'=>'required|string',
             'nbrLits'=>'required|integer',
             'type_chambre_id'=>'required|exists:type_chambre,id',
@@ -43,8 +43,13 @@ class RoomController extends Controller
             'etage'=>'required|string',
             'status'=>'required|integer'
         ]);
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+        } else {
+            $imagePath = null;
+        }
         $room= new Chambre([
-            'image'=>$request->input('image'),
+            'image'=>$imagePath,
             'numC'=>$request->input('numC'),
             'nbrLits'=>$request->input('nbrLits'),
             'type_chambre_id'=>$request->input('type_chambre_id'),

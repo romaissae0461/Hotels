@@ -74,7 +74,7 @@ class ReservationController extends Controller
         $room->status=0;
         $room->update();
         //return redirect()->route('reservations.index')->with('success','Chambre réservée!');
-        return response()->json(['success'=>true]);
+        return response()->json(['idReserv' => $reservation->id, 'message' => 'Reservation created successfully!']);
     }
 
     public function checkAvailability(Request $request)

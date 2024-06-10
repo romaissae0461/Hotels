@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css'
+  styleUrl: './edit.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class EditComponent implements OnInit {
 

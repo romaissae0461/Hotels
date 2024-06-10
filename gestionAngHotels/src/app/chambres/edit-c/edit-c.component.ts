@@ -6,7 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-edit-c',
   templateUrl: './edit-c.component.html',
-  styleUrl: './edit-c.component.css'
+  styleUrl: './edit-c.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class EditCComponent implements OnInit{
   numC: string='';	
@@ -22,6 +23,8 @@ export class EditCComponent implements OnInit{
   chambres: any;
 
   typeChambre: any;
+  selectedImage: File | null = null;
+
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router:Router){}
   ngOnInit(): void {
@@ -63,26 +66,56 @@ export class EditCComponent implements OnInit{
   }
 
   update(id: number):void{
-    let chambre={
+    let chambre: any={
       "numC": this.numC,
       "nbrLits": this.nbrLits,
       "type_chambre_id": this.type_chambre_id,
       "prixC": this.prixC,
       "etage": this.etage,
       "status": this.status,
+    };
+    if (this.selectedImage) {
+      // Convert image to base64 string
+      let reader = new FileReader();
+      reader.onload = (e: any) => {
+        chambre['image'] = e.target.result.split(',')[1];
+        this.http
+          .put('http://localhost:8000/api/chambre/' + id, chambre)
+          .subscribe((response) => {
+            console.log(response);
+            this.getChambreDetails(this.id);
+            this.router.navigate(['/chambres']);
+          });
+      };
+      reader.readAsDataURL(this.selectedImage);
+    } else {
+      this.http
+        .put('http://localhost:8000/api/chambre/' + id, chambre)
+        .subscribe((response) => {
+          console.log(response);
+          this.getChambreDetails(this.id);
+          this.router.navigate(['/chambres']);
+        });
     }
-    this.http.put('http://localhost:8000/api/chambre/' + id , chambre)
-    .subscribe((response)=>
-    {
-      console.log(response);
-      this.getChambreDetails(this.id);
-
-      this.router.navigate(['/chambres']);
-    })
   }
 
   onSubmit(form: NgForm){
     console.log(form.value);
   }
 
+  onFileChange(event: any): void {
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+      const file = fileList[0];
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+      if (!allowedTypes.includes(file.type)) {
+        this.errorMessage = 'Only image files (jpeg, png, gif, jpg) are allowed.';
+        this.selectedImage = null;
+        event.target.value = '';
+      } else {
+        this.selectedImage = file;
+        this.errorMessage = null;
+      }
+    }
+  }
 }

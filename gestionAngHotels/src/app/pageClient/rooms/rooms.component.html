@@ -107,43 +107,6 @@
           </div>
         </div>
       </div>
-                    <!-- <section>
-                        <ul class="" *ngFor="let chambre of chambres">
-                          <li>
-                            <picture data-aos="fade-left" class="aos-init aos-animate">
-                              <img src="{{chambre.image}}" alt="" style="width: 30%; height: auto;">
-                            </picture>
-                            <div class="cont-text aos-init aos-animate" data-aos="fade-right">
-                              <div class="text"><strong>Chambre <ng-container *ngFor="let type of typeChambre">
-                                <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
-                                </ng-container></strong>
-                                <br>
-                                Numéro: {{chambre.numC}} <br>
-                                Nombre de lit(s): {{chambre.nbrLits}} <br>
-                                
-                                    <div *ngFor="let iconClass of chambre.infos.split(','); let i = index">
-                                        <i [ngClass]="iconClass"></i>
-                                    </div>
-                                <br>
-                                <h6 class="w3-opacity">Prix: {{chambre.prixC}} Dhs</h6><br>
-                                Etage: 
-                                <span *ngIf="chambre.etage== 0">Rez de chaussée</span>
-                                <span *ngIf="chambre.etage == 1">Premier étage</span>
-                                <span *ngIf="chambre.etage == 2">Deuxième étage</span>
-                                <span *ngIf="chambre.etage == 3">Troisième étage</span>
-                                <span *ngIf="chambre.etage == 4">Quatrième étage</span>
-                                <br>
-                                Status: 
-                                    <span *ngIf="chambre.status === 0">Réservée</span>
-                                    <span *ngIf="chambre.status === 1">Disponible</span>
-                                    </div>
-                            </div>
-                            <button href="/create-r" class="button" (click)="redirectToReservation(chambre.id)">Réserver</button>
-
-                          </li>
-                          
-                        </ul>
-                    </section> -->
                    </tbody> 
             </table>
         <!-- </div> -->

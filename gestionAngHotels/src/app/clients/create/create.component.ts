@@ -5,7 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  styleUrl: './create.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class CreateComponent implements OnInit{
   clients: any;

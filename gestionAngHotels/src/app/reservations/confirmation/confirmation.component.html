@@ -1,16 +1,170 @@
-<div>
-    <h2>Confirmation Page</h2>
-    <p>Reservation Details:</p>
-    <ul>
-      <li>Nom: {{ reservationData?.nom }}</li>
-      <li>Prenom: {{ reservationData?.prenom }}</li>
-      <li>Email: {{ reservationData?.email }}</li>
-      <li>DateArrivée {{ reservationData?.dateArrivee }}</li>
-      <li>Date de Départ: {{ reservationData?.dateDepart }}</li>
-      <li>NbrChambre: {{ reservationData?.nbrChambre }}</li>
-      <li>NbrPersonne: {{ reservationData?.nbrPersonne }}</li>
-      <li>idC: {{ reservationData?.idC }}</li>
-      <li>id: {{ reservationData?.id }}</li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commentaires</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .more-button {
+   position: absolute;
+   top: 5px;
+   right: 10px;
+}
 
-    </ul>
-  </div>
+.dashboard-card {
+   position: absolute;
+   top: 15px;
+   left: 15px;
+   right: 15px;
+   bottom: 15px;
+}
+
+
+.dashboard-card-content {
+   text-align: center;
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   max-height: 100%;
+   justify-content: center;
+   align-items: stretch;
+}
+
+mat-card {
+   display: flex;
+   flex-direction: column;
+}
+    .container {
+      margin-top: 0px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .table th {
+      background-color: #f2f2f2;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    .w3-button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.w3-blue {
+  background-color: #2196F3;
+  color: white;
+}
+
+.w3-red {
+  background-color: #f44336;
+  color: white;
+}
+    .firstB{
+        background-color: white;
+    }
+    .secondB{
+        background-color: rgb(248, 233, 214);
+    }
+</style>
+</head>
+<body>
+    <mat-sidenav-container fullscreen>
+        <mat-sidenav mode="side" #sidenav opened position="start" style=" width: 23%"> <!--background-color: peru; -->
+         <!-- <button mat-icon-button (click)="toggleSidenav(sidenav)">
+           <mat-icon><img src="../assets/luna/menu1.png" alt=""></mat-icon>
+         </button> -->
+           <mat-nav-list>
+             <a><img src="https://see.fontimg.com/api/renderfont4/8M22Z/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/SG90ZWwgRGVsIEx1bmE/legendary-runes-free-trial.png" ></a>
+             <br><br>
+               <a mat-list-item href="/manager">Dashboard</a>
+               <a mat-button [matMenuTriggerFor]="chambre" style="margin-left: 8px; padding-top: 20px; padding-bottom: 30px;">Chambres</a>
+               <mat-menu #chambre="matMenu">
+                 <a mat-menu-item href="/chambres">Liste Chambres</a>
+                 <a mat-menu-item href="/create-c">Ajouter Chambre</a>
+               </mat-menu><br>
+               <a mat-button [matMenuTriggerFor]="reservations" style="margin-left: 8px; padding-bottom: 10px;">Reservations</a>
+               <mat-menu #reservations="matMenu">
+                 <a mat-menu-item href="/reservations">Liste Reservations</a>
+                 <a mat-menu-item href="/create-r">Ajouter Reservation</a>
+               </mat-menu><br>
+               <a mat-button [matMenuTriggerFor]="client" style="margin-left: 8px;">Clients</a>
+               <mat-menu #client="matMenu">
+                 <a mat-menu-item href="/clients">Liste Clients</a>
+                 <a mat-menu-item href="/create">Ajouter Client</a>
+               </mat-menu>
+               <a mat-list-item href="">Paiement</a>
+               <a mat-list-item href="comment">Commentaires</a>
+               <a mat-list-item href="/">Site</a>
+           </mat-nav-list>
+       </mat-sidenav>
+       <mat-sidenav-content>
+           <div class="dashboard-container split-view-container right">
+               <div class="navbar-container d-flex align-content-between" style="background-color: rgb(240, 218, 196);">
+                   <div class="d-flex justify-content-start">
+                     <div class="menu d-flex align-content-between" style="font-size: x-small;">
+                       
+                       <button mat-icon-button (click)="toggleSidenav(sidenav)">
+                         <!-- <mat-icon><img src="../assets/luna/menu.png" style="padding-bottom: 10px;"></mat-icon> -->
+                         <i class="fa fa-bars"></i>
+                       </button>
+                       <h1 style="color: black; margin-top: 0px;">Paiement</h1>
+                     </div>
+                   </div>
+                   
+                 </div>
+           <div class="container">     
+    <div class="medium-12 columns">
+        <div class="d-flex align-items-center justify-content-end small" style="background-color: rgb(250, 237, 221); padding-bottom: 20px; padding-top: 20px;">
+            <a href="/manager" class="btn btn-primary">Retour au Dashboard</a>
+        </div>
+        <table class="stack">
+          <thead>
+            <tr>
+              <th width="200">N° Facture</th>
+              <th width="200">Client</th>
+              <th width="200">N° Réservation</th>
+              <th width="200">Services demandés</th>
+              <th width="200">Total</th>
+              <th width="200">État de Paiement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let facts of facture">
+              <td>{{ facts.id }}</td>
+              <ng-container *ngFor="let client of clients"> <ng-container *ngIf="facts.idC === client.idC">{{ client.nomC }} {{client.prenom}}</ng-container></ng-container>
+              
+              <td>{{ facts.idReserv }}</td>
+              <ng-container *ngFor="let service of services"> <ng-container *ngIf="facts.idS === service.idS"> {{service.nomS}}</ng-container></ng-container>
+              <td>{{ facts.totalPrix }}</td>
+              <td>{{ facts.paiement ? 'Payé' : 'Non Payé' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div></mat-sidenav-content>
+    </mat-sidenav-container>
+    
+        
+    </body>
+    </html>
+    
+  

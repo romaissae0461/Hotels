@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-chambre',
   templateUrl: './chambre.component.html',
-  styleUrl: './chambre.component.css'
+  styleUrl: './chambre.component.css',
+  host: {ngSkipHydration: 'true'},
+
 })
 export class ChambreComponent implements OnInit{
 
@@ -18,6 +21,9 @@ export class ChambreComponent implements OnInit{
     this.getChambreType();
   }
 
+  toggleSidenav(sidenav: MatSidenav) {
+    sidenav.toggle();
+  }
   getChambres(){
     this.http.get('http://localhost:8000/api/chambres')
     .subscribe((response: any)=>{

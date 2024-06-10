@@ -9,56 +9,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-  /* .card {
-  display: flex;
-  align-items: center;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  margin-right: 40px;
-  border: 1px solid #ddd;
-  width: 100%;
-  max-width: 350px;
-  }
-  
-  
-  .card-content {
-  flex: 1;
-  padding: 16px;
-  }
-  
-  
-  .card-content h2 {
-  font-size: 1.5rem;
-  margin: 0;
-  }
-  
-  
-  .card-content h3 {
-  font-size: 1.2rem;
-  margin: 4px 0;
-  }
-  
-  
-  .card-content p {
-  font-size: 1rem;
-  margin: 8px 0;
-  }
-  
-  
-  .card-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: 20px;
-  font-size: 48px;
-  }
-  
-  
-  .change {
-  margin-right: 8px;
-  } */
-      /*card.component.css*/
 .more-button {
    position: absolute;
    top: 5px;
@@ -89,6 +39,13 @@ mat-card {
    display: flex;
    flex-direction: column;
 }
+.a{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.a:hover{
+  background-color: rgb(243, 219, 195);
+}
   </style>
     </head>
     <body> 
@@ -101,19 +58,26 @@ mat-card {
           <a><img src="https://see.fontimg.com/api/renderfont4/8M22Z/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/SG90ZWwgRGVsIEx1bmE/legendary-runes-free-trial.png" ></a>
           <br><br>
             <a mat-list-item href="/manager">Dashboard</a>
-            <a mat-list-item href="/reservations">Reservations</a>
-            <a mat-list-item href="/chambres">Chambres</a>
+            <div style="margin-left: 8px;  font-size: x-large;">
+            <a mat-button [matMenuTriggerFor]="chambres">Chambres</a>
+            <mat-menu #chambres="matMenu" style="padding-bottom: 10px;">
+              <a mat-list-item href="/chambres">Liste Chambres</a>
+              <a mat-list-item href="/create-c">Ajouter Chambre</a>
+            </mat-menu><br>
             <a mat-button [matMenuTriggerFor]="reservations">Reservations</a>
-            <mat-menu #reservations="matMenu">
-              <a mat-menu-item href="/reservations">All Reservations</a>
-              <a mat-menu-item href="/create-r">Add</a>
+            <mat-menu #reservations="matMenu" style="padding-bottom: 10px;">
+              <a mat-menu-item href="/reservations">Liste Reservations</a>
+              <a mat-menu-item href="/create-r">Ajouter Reservation</a>
             </mat-menu>
-
-            <a mat-list-item href="">Rapports</a>
-            <a mat-list-item href="/clients">Clients</a>
-            <a mat-list-item href="">Paiement</a>
-            <a mat-list-item href="">Commentaires</a>
-            <a mat-list-item href="">Paramètres</a>
+<br>
+            <a mat-button [matMenuTriggerFor]="clients">Clients</a>
+            <mat-menu #clients="matMenu">
+              <a mat-menu-item href="/clients">Liste CLients</a>
+              <a mat-menu-item href="/create">Ajouter Client</a>
+            </mat-menu></div>
+            <a mat-list-item href="/confirm">Paiement</a>
+            <a mat-list-item href="/comment">Commentaires</a>
+            <a mat-list-item href="/">Site</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -130,15 +94,19 @@ mat-card {
               </div>
             </div>
             <div class="d-flex justify-content-end">
-              <a href="/comment">commentaire</a>
+              <a href="/chambres" class="a" style="border: solid 0px; border-radius: 8px; margin-right: 12px; color: black;">Chambres</a>
+              <a href="/reservations" class="a" style="border: solid 0px; border-radius: 8px; margin-right: 12px; color: black;">Reservations</a>
+              <a href="/clients" class="a" style="border: solid 0px; border-radius: 8px; margin-right: 12px; color: black;">Client</a>
+              <a href="/comment" class="a" style="border: solid 0px; border-radius: 8px; margin-right: 12px; color: black;">Paiement</a>
+              <a href="/comment" class="a" style="border: solid 0px; border-radius: 8px; margin-right: 12px; color: black;">commentaire</a>
             </div>
           </div>
 
           <div class="container-fluid" style="background-color: rgb(241, 184, 127);">
             <div class="page-header">
               <div class="row">
-                <div class="col-sm-12 mt-5">
-                  <h3 class="page-title mt-3">Bienvenue Mr. {{user}}</h3>
+                <div class="col-sm-12 mt-5"><br>
+                  <h3 class="page-title mt-3">Bienvenue Mlle. Romaissae</h3><br>
                   <!-- <ul class="breadcrumb">
                     <li class="breadcrumb-item active">Dashboard</li>
                   </ul> -->
@@ -147,7 +115,7 @@ mat-card {
             </div>
           </div>
           <div class="grid-container">
-            <h1 class="mat-h1">Dashboard</h1>
+            <h1 class="mat-h1" style="margin-left: 12px;">Dashboard</h1>
             <mat-grid-list cols="4" rowHeight="150px" class="d-flex align-content-between justify-content-between">
               <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-card class="dashboard-card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">

@@ -30,7 +30,7 @@ export class RoomsComponent  implements OnInit{
   }
 
   redirectToReservation(id: number): void {
-    this.router.navigate(['/create-r'], { queryParams: { id: id } });
+    this.router.navigate(['/createReserv'], { queryParams: { id: id } });
   }
   redirectToInfosRoom(id: number): void {
     this.router.navigate(['/clientP'], { queryParams: { id: id } });

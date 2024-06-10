@@ -151,7 +151,7 @@
     <div class="w3-row-padding w3-padding-16" >
         <div class="w3-third w3-margin-bottom" *ngFor="let chambre of chambres">
             <div class="section-item" >
-                <img src="{{chambre.image}}" alt="" style="width:400px; height: 300px;">
+                <img [src]="'http://localhost:8000/storage/' + chambre.image" alt="" style="width:400px; height: 300px;">
                 <div class="text"><strong>Chambre <ng-container *ngFor="let type of typeChambre">
                     <ng-container *ngIf="type.id === chambre.type_chambre_id">{{ type.typeC }}</ng-container>
                     </ng-container></strong>

@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-c',
   templateUrl: './create-c.component.html',
-  styleUrl: './create-c.component.css'
+  styleUrl: './create-c.component.css',
+  host: {ngSkipHydration: 'true'},
+
 })
 export class CreateCComponent implements OnInit{
 
@@ -62,7 +64,7 @@ export class CreateCComponent implements OnInit{
     chambre.append('etage', this.etage);
     chambre.append('status', this.status.toString());
     if (this.selectedImage) {
-      chambre.append('image', this.selectedImage);
+      chambre.append('image', this.selectedImage, this.selectedImage.name);
     }
     this.http.post<any>('http://localhost:8000/api/chambre/store', chambre)
     .subscribe((response)=>
@@ -76,7 +78,16 @@ export class CreateCComponent implements OnInit{
   onFileChange(event: any): void {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
-      this.selectedImage = fileList[0];
+      const file = fileList[0];
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+      if (!allowedTypes.includes(file.type)) {
+        this.errorMessage = 'Seuls les fichiers images (jpeg, png, gif, jpg) sont autorisés.';
+        this.selectedImage = null;
+        event.target.value = '';
+      } else {
+        this.selectedImage = file;
+        this.errorMessage = null;
+      }
     }
   }
 

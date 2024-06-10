@@ -47,7 +47,7 @@ Route::get('/clients/create', [ClientController::class, 'create'])->name('client
 Route::post('/clients/store', [ClientController::class, 'store'])->name('clients.store');
 Route::get('/clients/{client}', [ClientController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/{client}', [ClientController::class, 'update'])->name('clients.update');
-Route::delete('/delete/{id}', [ClientController::class,'delete'])->name('clients.delete');
+Route::delete('/clients/delete/{id}', [ClientController::class,'delete']);
 Route::get('clients/{id}/reservation', [ClientController::class,'reservations']);
 //End clients routes
 
@@ -84,7 +84,7 @@ Route::get('/password/reset/{token}', function ($token) {
 
 //Chambres routes
 Route::get('/chambre/type', [RoomController::class,'roomType']);
-Route::get('/chambre/getType/{typeId}', [RoomController::class, 'getRoomsByType']);
+Route::get('/chambre/getType/{id}', [RoomController::class, 'getRoomsByType']);
 
 Route::get('/chambres', [RoomController::class, 'index']);
 Route::get('/chambre/create', [RoomController::class,'create']);
@@ -112,7 +112,7 @@ Route::get('/contacts', [ContactController::class, 'index']);
 Route::get('/contacts/create', [ContactController::class,'create']);
 // Route::post('/contacts/create', [ContactController::class,'create']);
 // Route::get('/contacts/store', [ContactController::class,'store']);
-Route::post('/contacts/store', [ContactController::class,'store'])->middleware('auth');
+Route::post('/contacts/store', [ContactController::class,'store']);
 Route::delete('/contacts/delete/{id}', [ContactController::class,'destroy']);
 
 //End  contacts routes
@@ -149,8 +149,11 @@ Route::post('/reservice/store', [ServiceReserve::class, 'store']);
 
 //facture routes
 
-Route::get('/factures', [FactureController::class, 'getAllFactures']);
-Route::post('/facture/create', [FactureController::class, 'createFacture']);
+Route::get('/factures', [FactureController::class, 'index']);
+Route::post('/facture/create', [FactureController::class, 'store']);
+Route::get('/facture/{id}', [FactureController::class, 'show']);
+Route::put('/facture/{id}', [FactureController::class, 'update']);
+Route::delete('/facture/{id}', [FactureController::class, 'delete']);
 
 //End facture routes
 

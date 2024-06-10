@@ -20,7 +20,7 @@ class ServiceReserve extends Controller
             'dateSer'=>'required|date',
             'heure'=>'required|date_format:H:i'
         ]);
-        $servReserv = Reservation::find($request->idReser);
+        $servReserv = Reservation::find($request->idReserv);
         $servReserv= new ReservationService([
             'idReserv'=>$request->input('idReserv'),
             'idS'=>$request->input('idS'),

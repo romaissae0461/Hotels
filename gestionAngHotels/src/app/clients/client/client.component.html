@@ -1,12 +1,101 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>W3.CSS Template</title>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+.more-button {
+   position: absolute;
+   top: 5px;
+   right: 10px;
+}
+
+.dashboard-card {
+   position: absolute;
+   top: 15px;
+   left: 15px;
+   right: 15px;
+   bottom: 15px;
+}
+
+
+.dashboard-card-content {
+   text-align: center;
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   max-height: 100%;
+   justify-content: center;
+   align-items: stretch;
+}
+
+mat-card {
+   display: flex;
+   flex-direction: column;
+}
+  </style>
+    </head>
+    <body> 
+<mat-sidenav-container fullscreen>
+     <mat-sidenav mode="side" #sidenav opened position="start" style=" width: 23%"> <!--background-color: peru; -->
+      <!-- <button mat-icon-button (click)="toggleSidenav(sidenav)">
+        <mat-icon><img src="../assets/luna/menu1.png" alt=""></mat-icon>
+      </button> -->
+        <mat-nav-list>
+          <a><img src="https://see.fontimg.com/api/renderfont4/8M22Z/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/SG90ZWwgRGVsIEx1bmE/legendary-runes-free-trial.png" ></a>
+          <br><br>
+          <a mat-list-item href="/manager">Dashboard</a>
+          <div style="margin-left: 8px;  font-size: x-large;">
+          <a mat-button [matMenuTriggerFor]="chambres">Chambres</a>
+          <mat-menu #chambres="matMenu" style="padding-bottom: 10px;">
+            <a mat-list-item href="/chambres">Liste Chambres</a>
+            <a mat-list-item href="/create-c">Ajouter Chambre</a>
+          </mat-menu><br>
+          <a mat-button [matMenuTriggerFor]="reservations">Reservations</a>
+          <mat-menu #reservations="matMenu" style="padding-bottom: 10px;">
+            <a mat-menu-item href="/reservations">Liste Reservations</a>
+            <a mat-menu-item href="/create-r">Ajouter Reservation</a>
+          </mat-menu>
+<br>
+          <a mat-button [matMenuTriggerFor]="client">Clients</a>
+          <mat-menu #client="matMenu">
+            <a mat-menu-item href="/clients">Liste Clients</a>
+            <a mat-menu-item href="/create">Ajouter Client</a>
+          </mat-menu></div>
+          <a mat-list-item href="">Paiement</a>
+          <a mat-list-item href="/comment">Commentaires</a>
+          <a mat-list-item href="/">Site</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="dashboard-container split-view-container right">
+            <div class="navbar-container d-flex align-content-between" style="background-color: rgb(240, 218, 196);">
+                <div class="d-flex justify-content-start">
+                  <div class="menu d-flex align-content-between" style="font-size: x-small;">
+                    
+                    <button mat-icon-button (click)="toggleSidenav(sidenav)">
+                      <!-- <mat-icon><img src="../assets/luna/menu.png" style="padding-bottom: 10px;"></mat-icon> -->
+                      <i class="fa fa-bars"></i>
+                    </button>
+                    <h1 style="color: black; margin-top: 0px;">Clients</h1>
+                  </div>
+                </div>
+                
+              </div>
+        <div class="container">
     <div class="medium-12 columns">
-        <h4>Clients</h4>
-        <div class="d-flex align-items-center justify-content-between small">
+        
+        <div class="d-flex align-items-center justify-content-between small" style="background-color: rgb(250, 237, 221); padding-bottom: 20px; padding-top: 20px;">
             <a href="/create" class="btn btn-primary">Ajouter Client</a>
-            <a href="/manager" class="btn btn-primary">Accueil</a>
+            <a href="/manager" class="btn btn-primary">Retour au Dashboard</a>
 
         </div>
-        <hr>
         <table class="stack">
             <thead>
                 <tr>
@@ -36,5 +125,10 @@
         </table>
     </div>
 </div>
+        </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
 
-
+    
+</body>
+</html>

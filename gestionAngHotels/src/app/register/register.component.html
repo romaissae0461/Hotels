@@ -23,7 +23,7 @@ body, html {
   /* The image used */
   background-image: url("../assets/luna/luna5.jpg");
   width: 1400px;
-  height: 640px;
+  height: 715px;
   padding-left: 0px;
   padding-top: 0px;
   /* Center and scale the image nicely */
@@ -38,7 +38,7 @@ body, html {
   position: absolute;
   left: 0;
   margin: 20px;
-  max-width: 500px;
+  max-width: 800px;
   padding: 16px;
   background-color: white;
 }
@@ -71,6 +71,9 @@ input[type=text]:focus, input[type=password]:focus {
 .btn:hover {
   opacity: 1;
 }
+.form-group {
+  margin-bottom: 15px;
+}
 </style>
 </head>
 <body>
@@ -79,19 +82,35 @@ input[type=text]:focus, input[type=password]:focus {
   <form action="/action_page.php" class="container">
     
     <div class="d-flex align-content-center justify-content-center">
-        <img src="../assets/luna/del_luna_logo.jpeg" style="width: 20%; ">
+        <img src="../assets/luna/del_luna_logo.jpeg" style="width: 20%;">
         <h1>S'inscrire</h1></div>
         <div style="margin-left: 25%;">
         Vous avez déjà un compte?<a href="/login"> Se connecter</a> <br><br></div>
 
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" [(ngModel)]="name" required>
-
+        <div class="d-flex align-content-between justify-content-between">
+          <div class="form-group"><label for="name"><b>Nom</b></label>
+          <input type="text" placeholder="Votre Nom" name="name" [(ngModel)]="name" required style="padding-right: 70px;">
+          </div>
+          <div class="form-group">
+            <label for="prenom"><b>Prénom</b></label>
+            <input type="text" placeholder="Votre Prénom" name="prenom" [(ngModel)]="prenom" required style="padding-right: 70px;">
+          </div>
+        </div>
+        <div class="d-flex align-content-between justify-content-between">
+          <div class="form-group">
+            <label for="adresse"><b>Adresse</b></label>
+            <input type="text" placeholder="Votre Adresse" name="adresse" [(ngModel)]="adresse" required style="padding-right: 45px;">
+          </div>
+          <div class="form-group">
+            <label for="telephone"><b>Téléphone</b></label>
+            <input type="text" placeholder="Votre Téléphone" name="telephone" [(ngModel)]="telephone" required style="padding-right: 50px;">
+          </div>
+        </div>
     <label for="email"><b>Email</b></label>
-    <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="exemple@gmail.com">
+    <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="example@gmail.com">
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" [(ngModel)]="password" required>
+    <label for="password"><b>Mot de passe</b></label>
+    <input type="password" placeholder="Entrer un mot de passe" name="password" [(ngModel)]="password" required>
 
     <!-- <label for="confirmer"><b>Confirm Password</b></label>
 <input type="password" placeholder="Confirmer Password" name="confirmer" [(ngModel)]="confirmer" required> -->

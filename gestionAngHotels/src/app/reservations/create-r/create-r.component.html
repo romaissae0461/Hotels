@@ -94,8 +94,9 @@ mat-card {
     margin-left: 450px;
     width: 100px;
     height: 50px;
-    padding-top: 20px;
+    padding-top: 90px;
 }
+
   </style>
     </head>
     <body> 
@@ -108,87 +109,138 @@ mat-card {
           <a><img src="https://see.fontimg.com/api/renderfont4/8M22Z/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/SG90ZWwgRGVsIEx1bmE/legendary-runes-free-trial.png" ></a>
           <br><br>
             <a mat-list-item href="/manager">Dashboard</a>
-            <a mat-list-item href="/reservations">Reservations</a>
-            <a mat-list-item href="/chambres">Chambres</a>
+            <div style="margin-left: 8px;  font-size: x-large;">
+            <a mat-button [matMenuTriggerFor]="chambre">Chambres</a>
+            <mat-menu #chambre="matMenu" style="padding-bottom: 10px;">
+              <a mat-list-item href="/chambres">Liste Chambres</a>
+              <a mat-list-item href="/create-c">Ajouter Chambre</a>
+            </mat-menu><br>
             <a mat-button [matMenuTriggerFor]="reservations">Reservations</a>
-            <mat-menu #reservations="matMenu">
-              <a mat-menu-item href="/reservations">All Reservations</a>
-              <a mat-menu-item href="/create-r">Add</a>
+            <mat-menu #reservations="matMenu" style="padding-bottom: 10px;">
+              <a mat-menu-item href="/reservations">Liste Reservations</a>
+              <a mat-menu-item href="/create-r">Ajouter Reservation</a>
             </mat-menu>
-
-            <a mat-list-item href="">Rapports</a>
-            <a mat-list-item href="/clients">Clients</a>
+<br>
+            <a mat-button [matMenuTriggerFor]="client">Clients</a>
+            <mat-menu #client="matMenu">
+              <a mat-menu-item href="/clients">Liste CLients</a>
+              <a mat-menu-item href="/create">Ajouter Client</a>
+            </mat-menu></div>
             <a mat-list-item href="">Paiement</a>
-            <a mat-list-item href="">Commentaires</a>
-            <a mat-list-item href="">Paramètres</a>
+            <a mat-list-item href="/comment">Commentaires</a>
+            <a mat-list-item href="/">Site</a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>  
-        <mat-grid-list cols="1" class="d-flex align-content-between justify-content-between">
+    <mat-sidenav-content style="background-color: burlywood;padding-top: 30px; padding-bottom: 12px;">  
+        <mat-grid-list cols="1" rowHeight="890px" class="d-flex align-content-between justify-content-between">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-              <mat-card class="dashboard-card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;">
+              <mat-card class="dashboard-card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; height: 870px;" *ngIf="step === 1">
                 <mat-card-header>
-                  <mat-card-title>
+                  <mat-card-title style="font-size: 40px; font-family: system-ui; padding-top: 20px; padding-bottom: 0px;">
                     Formulaire de réservations
                   </mat-card-title>
                 </mat-card-header>
                 <mat-card-content >
                     <div class="d-flex align-content-between justify-content-center inp">
-                    
-                        <input name="nom" type="text" [(ngModel)]="nom" placeholder="Nom" style="margin-right: 50px; padding-right: 200px; height: 50px; border-radius: 8px;">
-                    
-                        
-                        <input name="prenom" type="text" [(ngModel)]="prenom" placeholder="Prénom" style="padding-right: 200px; height: 50px; border-radius: 8px;">
+                      <div>
+                        <input name="nom" type="text" [(ngModel)]="nom" placeholder="Nom" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;margin-right: 30px; padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
+                      </div>
+                      <div>  
+                        <input name="prenom" type="text" [(ngModel)]="prenom" placeholder="Prénom" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
+                      </div>
                     </div>
     <br>
                     <div class="d-flex align-content-center justify-content-center inp">
-                        
-                        <input name="email" type="text" [(ngModel)]="email" placeholder="Email" style="margin-right: 50px; padding-right: 200px; height: 50px; border-radius: 8px;">
-                        <input name="mobile" type="text" placeholder="Mobile" style="padding-right: 200px; height: 50px; border-radius: 8px;">
+                        <div>
+                        <input name="email" type="text" [(ngModel)]="email" placeholder="Email" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;margin-right: 30px; padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
+                        </div>
+                        <div>
+                        <input name="mobile" type="text" placeholder="Mobile" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
+                        </div>
                     </div>
     <br>
                     
                     <div class="d-flex align-content-center justify-content-center inp">
                         <div>
                             <label class="label info">Date d'arrivée: </label> <br>
-                            <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee" placeholder="Date d'arrivée" style="margin-right: 50px; padding-right: 265px; height: 50px; border-radius: 8px;">
+                            <input name="dateArrivee" type="date" [(ngModel)]="dateArrivee" placeholder="Date d'arrivée" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;padding-left: 10px; margin-right: 30px; padding-right: 305px; height: 70px; border:1px solid gray; border-radius: 8px;">
                         </div>
                         <div>
                             <label class="label info">Date de départ: </label> <br>
-                            <input name="dateDepart" type="date" [(ngModel)]="dateDepart" placeholder="Date de départ" style="padding-right: 260px; height: 50px; border-radius: 8px;">
+                            <input name="dateDepart" type="date" [(ngModel)]="dateDepart" placeholder="Date de départ" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;padding-right: 305px; height: 70px; border:1px solid gray; border-radius: 8px;">
                         </div>
                     </div>
     <br><br>
-                    <div class="d-flex align-content-centre justify-content-center inp">
+                    <div class="d-flex align-content-centre justify-content-center inp" style="padding-bottom: 45px;">
                         <div>
                             <label class="label info">Nombre de chambre: </label> <br>
-                            <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre" style="margin-right: 50px; padding-right: 205px; height: 50px; border-radius: 8px;">
+                            <input name="nbrChambre" type="text" [(ngModel)]="nbrChambre" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;margin-right: 30px; padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
                         </div>
                         <div>
                             <label class="label info">Nombre de personne: </label><br>
-                            <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne" style="padding-right: 205px; height: 50px; border-radius: 8px;">
+                            <input name="nbrPersonne" type="text" [(ngModel)]="nbrPersonne" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;padding-right: 250px; height: 70px; border:1px solid gray; border-radius: 8px;">
                         </div>
                     </div>
     <br>
-                    <div class="" style="margin-left: 60px; width: 100px; height: 100px; padding-top: 20px;margin-right: 50px; height: 50px; border-radius: 8px;">
+                    <div class="" style="margin-left: 30px; padding-top: 60px;">
                         <label class="label info">Numero de la chambre: </label><br>
-                        <select class="form-control" name="numC" [(ngModel)]="id">
-                            <option value="">selectionnez une chambre</option>
+                        <select class="form-control" name="numC" [(ngModel)]="id" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;width: 100px; height: 50px; padding-top: 50px; padding-right: 940px; border:1px solid gray; border-radius: 8px;">
+                            <option value="">Sélectionnez une chambre</option>
                             <option *ngFor="let chambre of chambres" value="{{chambre.id}}">{{chambre.numC}}</option>
                         </select>
                     </div>
+                                    
                     <br> <br>
-                    <div>
+                    <div class="d-flex align-content-center justify-content-start" style=" margin-left: 40px;">
                     <button type="submit" class="btn btn-primary" (click)="store()">Enregistrer</button>
                     <a href="/create-r" class="btn btn-danger">Annuler</a>  
-                    </div>
+                    </div>             
                 </mat-card-content>
               </mat-card>
             </mat-grid-tile>
         </mat-grid-list>
   
+        <mat-grid-list cols="1" rowHeight="590px" class="d-flex align-content-between justify-content-between">
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-card class="dashboard-card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px; height: 530px; margin-top: 0px;" *ngIf="step === 2">
+              <mat-card-header>
+                <mat-card-title style="font-size: 40px; font-family: system-ui; padding-top: 20px; padding-bottom: 0px;">
+                  Réservation de services supplémentaire
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p [(ngModel)]="idReserv">ID de réservation: {{ idReserv }}</p>
+                    <div class="inp" style="margin-left: 50px;">
+                      <label class="label info">Service: </label><br>
+                      <select class="form-control" name="idS" [(ngModel)]="idS" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 8px;width: 100px; height: 70px; padding-top: 50px;padding-right: 900px;  border:1px solid gray; border-radius: 8px;">
+                        <option value="">Sélectionnez un service</option>
+                        <option *ngFor="let service of services" [value]="service.idS">{{service.nomS}}</option>
+                      </select>
+                    </div><br>
+                    <div class="d-flex align-content-center justify-content-center inp">
+                      <div>
+                        <label class="label info">Date du service: </label><br>
+                        <input name="dateSer" type="date" [(ngModel)]="dateSer" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-right: 30px; padding-right: 250px; height: 70px; border-radius: 8px; border:1px solid gray; border-radius: 8px;">
+                      </div>
+                      <div>
+                        <label class="label info">Heure du service: </label><br>
+                        <input name="heure" type="time" [(ngModel)]="heure" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding-right: 250px; height: 70px; border-radius: 8px; border:1px solid gray; border-radius: 8px;">
+                      </div>
+                  </div><br><br>
+                  <br> <br><br>
+                  <div class="d-flex align-content-center justify-content-start" style=" margin-left: 40px;">
+                  <button type="submit" class="btn btn-primary" (click)="createServiceReservation()">Enregistrer</button>
+                  <a href="/create-r" class="btn btn-danger">Annuler</a>  
+                  <br><br>
+                  {{ errorMessage }}
+                  </div>             
+              </mat-card-content>
+            </mat-card>
+          </mat-grid-tile>
+      </mat-grid-list>
  </mat-sidenav-content>
     </mat-sidenav-container>
+   
 
     
   </body>

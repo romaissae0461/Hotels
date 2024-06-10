@@ -92,50 +92,116 @@ ul {
     margin-right: 6px;
     line-height: 25px;
 }
+.dashboard-card {
+   position: absolute;
+   top: 15px;
+   left: 15px;
+   right: 15px;
+   bottom: 1px;
+}
+
+
+.dashboard-card-content {
+   text-align: center;
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   max-height: 100%;
+   justify-content: center;
+   align-items: stretch;
+}
+
+mat-card {
+   display: flex;
+   flex-direction: column;
+}
+.block:hover{
+    background-color: peru;
+    color:white;
+}
+.block:hover i {
+    color: white !important;
+}
         </style>
                     
     </head>
     <body class="w3-white">
-    <!-- Navigation Bar -->
-    <header class="mobile_header">
-        <div class="top_bar_moblie">
-            <div class="container">
-                <p><i class="fa fa-envelope"></i> hotel.DelLuna&#64;gmail.com</p>
-                <p><i class="fa fa-phone"></i> +212 653889540</p>
-            </div>
-        </div>
-    </header>
-    <header class="header_top_inner d-flex">
-        <div class="top_left">
-            <ul class="clearfix">
-                <p>Bienvenue</p>
-            </ul>
-        </div>
-        <div class="top_right align-content-between justify-content-between" style="padding-left: 800px;">
-            <ul>
-                <p><span><i class="fa fa-phone"></i> +212 653889540</span></p>
-                <p><span><i class="fa fa-envelope"></i> hotel.DelLuna&#64;gmail.com</span></p>
-                <p><span><i class="fa map-marker-alt">&#xf3c5;</i> Fès, Maroc</span></p>
-            </ul>
-        </div>
-    </header>
+    
     <div class=" d-flex justify-content-center" >
         <div class="logo d-flex">
-            <img src="" alt="Hotel Del Luna" width="200px" height="100px" style="margin: 0 auto; color: white;">
+            <img src="" alt="Hotel Del Luna" width="200px" height="100px" style="margin: 0 auto; color: rgb(12, 12, 12);">
         </div>
         <div class="links d-flex navbar-container">
-            <a href="/rooms" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:aliceblue">Chambres</a>
-            <a href="#about" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:aliceblue">About</a>
-            <a href="/services" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:aliceblue">Services</a>
-            <a href="/contact/client" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:aliceblue">Contact</a>
+            <a href="/rooms" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:rgb(16, 16, 17)">Chambres</a>
+            <a href="#about" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:rgb(22, 22, 22)">About</a>
+            <a href="/services" class="w3-bar-item  w3-mobile" style="padding: 20px 16px; color:rgb(24, 25, 26)">Services</a>
+            <a href="/contact/client" class="w3-bar-item w3-mobile" style="padding: 20px 16px; color:rgb(15, 15, 15)">Contact</a>
         </div>
             <a href="/createReserv" class=" w3-bar-item button2 w3-right w3-mobile" style="height: 18%; color: lightgoldenrodyellow; ">Réserver une chambre</a>
         
     </div>
     <div style="background-image: url(../assets/luna/hot.jpg); background-repeat: no-repeat; background-size: cover; background-position: 0% 230%; background-attachment: fixed; height: 400px;">
-        <div class="center">Contactez-nous</div>
+        <!-- <div class="center">Contactez-nous</div> -->
     </div>
-    <div class="row">
+    <div style="padding-bottom: 20px;">
+        <h1 class="heading-text text-center" style="background-image: url(../assets/luna/star0.avif); background-size: 60px; background-position: 33% 0 ; background-repeat: no-repeat;">CONTACTEZ-NOUS SIMPLEMENT</h1>
+        <p style="text-align: center; font-size: x-large;">N'hésitez pas à nous contacter. Nous serions ravis d'entendre vos pensées et de répondre à toutes vos questions !</p>
+        <mat-grid-list cols="3" rowHeight="350px" class="d-flex align-content-between justify-content-between" style="margin-left: 50px; margin-right: 20px;">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="dashboard-card block" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <mat-card-header>
+                  <mat-card-title style="font-size: xx-large;">
+                  
+                    <i class="fa fa-map-marker" style="font-size:60px;color:peru; width: 70px; height: 50px;"></i>  <strong>Adresse</strong>
+                    
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <div>
+                        <h5 style="text-align: justify; margin-left: 80px;">Découvrez le luxe et le confort à l'Hôtel Del Luna</h5>
+                        <p style="text-align: left; font-size: large;">12 Avenue des Roses,Quartier des Bougainvilliers,<br>30000 Fès, Maroc</p>
+                    </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="dashboard-card" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: peru;">
+                <mat-card-header>
+                  <mat-card-title style="font-size: xx-large; color: white;">
+                  
+                    <i class="fa fa-envelope" style="font-size:60px;color: white; width: 70px; height: 50px;"></i> <strong>Envoyer un e-mail</strong>
+                    
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                  <div>
+                    <h5 style="text-align: justify; margin-left: 80px; color: white;">N'hésitez pas à nous contacter pour toute demande d'information ou de réservation. Nous sommes disponibles pour répondre à vos questions et vous aider à planifier votre séjour.</h5>
+                    <p style="text-align: left; font-size: large; color: white;">hotel.DelLuna&#64;gmail.com</p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <mat-card class="dashboard-card block" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <mat-card-header>
+                  <mat-card-title>
+                  
+                    <i class="fa fa-phone" style="font-size:60px;color:peru; width: 70px; height: 50px;"></i><strong>Passer un coup de téléphone</strong>
+                    
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                  <div>
+                    <h5 style="text-align: justify; margin-left: 80px;">Parlez directement avec notre service de réception. Nous serons heureux de vous aider.</h5>
+                    <p style="text-align: left; font-size: large;">+212 6555555</p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="">
     <div class="mt-4">
         <div *ngIf="successMessage" class="alert alert-success">
             <h3>{{ successMessage }}</h3>
@@ -145,26 +211,25 @@ ul {
                 <li>{{ errorMessage }}</li>
             </ul>
         </div>
-        <form method="post" action="/chambres">
+        <div><h1 class="heading-text" style="text-align: center;background-image: url(../assets/luna/star0.avif); background-size: 60px; background-position: 40% 0 ; background-repeat: no-repeat;">ÉCRIRE UN MESSAGE</h1>
+            <p style="text-align: center; margin-left: 50px; font-size: xx-large;">N'hésitez pas à nous envoyer vos messages</p></div>
+        <form method="post" action="/chambres" style="margin-left: 370px;">
             <input type="hidden" name="_method" value="put">
             <!-- <img src="../assets/luna/star0.avif" width="10px"> -->
-              <h1 class="heading-text text-center" style="background-image: url(../assets/luna/star0.avif); background-size: 60px; background-position: 9% 0 ; background-repeat: no-repeat;">Contactez nous</h1>
             <div>
-                <label for="name">Votre nom: </label><br>
-                <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Nom complet">
+                <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Nom complet" style="padding-left: 12px;padding-right: 486px; height: 60px; border: 1px solid grey; border-radius: 8px;">
             </div>
             <br>
             <div>
-                <label for="email">Votre email: </label><br>
-                <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="exemple@gmail.com">
+                <label for="email"><i class="fa fa-envelope"></i> </label><br>
+                <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="exemple@gmail.com" style="padding-left: 12px;padding-right: 486px; height: 60px; border: 1px solid grey; border-radius: 8px;">
             </div>
             <br>
-            <div> 
-                <label>Message:</label><br /><br>
-                <textarea name="message" id="" cols="30" rows="10" [(ngModel)]="message" placeholder="Je vous  contacte pour..."></textarea>
+            <div>
+                <textarea name="message" id="" cols="80" rows="10" [(ngModel)]="message" placeholder="Entrez Votre Message" style="padding-left: 12px; padding-top: 12px; border: 1px solid grey; border-radius: 8px;"></textarea>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary" (click)="create()">Envoyer message</button>
+            <button type="submit" class="btn btn-primary" (click)="create()" style="border-radius: 8px; background-color: peru; color: white; width: 150px; height: 50px;">Envoyer message</button>
         </form>
     </div>
 </div>

@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css'
+  styleUrl: './reservation.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class ReservationComponent implements OnInit{
 
@@ -40,10 +42,10 @@ export class ReservationComponent implements OnInit{
       this.reservations = response;
     })
   }
-
+  toggleSidenav(sidenav: MatSidenav) {
+    sidenav.toggle();
+  }
   
   
-
-
   
 }

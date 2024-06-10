@@ -14,4 +14,15 @@ class Chambre extends Model
     public function reservations(){
         return $this->hasMany(Reservation::class, 'idReserv');
     }
+
+    public function updateStatusBasedOnReservations()
+    {
+        $now = \Carbon\Carbon::now();
+        $latestReservation = $this->reservations()->where('dateDepart', '<', $now)->orderBy('dateDepart', 'desc')->first();
+        
+        if ($latestReservation && $latestReservation->dateDepart->lt($now)) {
+            $this->status = 1; // Available
+            $this->save();
+        }
+    }
 }

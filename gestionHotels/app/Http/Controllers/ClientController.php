@@ -108,8 +108,8 @@ class ClientController extends Controller
         return response()->json(['message'=>'Une erreur est survenue, veuillez réessayer!']);
     }
 */
-    public function delete(Client $client){
-        //$client = Client::findOrFail($id);
+    public function delete($id){
+        $client = Client::findOrFail($id);
         $reservations = $client->reservations()->get();
         if($reservations->isNotEmpty()){
             foreach($reservations as $reservation){

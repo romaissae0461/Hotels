@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Client;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -19,6 +20,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
             $request->session()->regenerate();
 
             return response()->json(['message' => 'Authenticated'], 200);
@@ -40,14 +42,26 @@ class LoginController extends Controller
     public function getin(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'prenom' => 'required|string|max:255',
+            'adresse' => 'required|string|max:255',
+            'telephone' => 'required|string|max:15',
+            'email' => 'required|string|email|max:255|unique:users|unique:clients,email',
             'password' => 'required|string|min:8',
         ]);
 
-        $user= User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $client = Client::create([
+            'nomC' => $request->name,
+            'prenom' => $request->prenom,
+            'adresse' => $request->adresse,
+            'telephone' => $request->telephone,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
 
         Auth::Login( $user );

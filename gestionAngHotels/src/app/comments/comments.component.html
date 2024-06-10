@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commentaires</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .container {
+      margin-top: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table th, .table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    .table th {
+      background-color: #f2f2f2;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    .w3-button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.w3-blue {
+  background-color: #2196F3;
+  color: white;
+}
+
+.w3-red {
+  background-color: #f44336;
+  color: white;
+}
+  </style>
+</head>
+<body>
+    <div mode="side" #sidenav opened position="start" style=" width: 23%">
+        <mat-nav-list>
+        <a><img src="https://see.fontimg.com/api/renderfont4/8M22Z/eyJyIjoiZnMiLCJoIjo2NSwidyI6MTAwMCwiZnMiOjY1LCJmZ2MiOiIjMDAwMDAwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/SG90ZWwgRGVsIEx1bmE/legendary-runes-free-trial.png" ></a>
+          <br><br>
+          <a mat-list-item href="/manager">Dashboard</a>
+          <div style="margin-left: 8px;  font-size: x-large;">
+          <a mat-button [matMenuTriggerFor]="chambres">Chambres</a>
+          <mat-menu #chambres="matMenu" style="padding-bottom: 10px;">
+            <a mat-list-item href="/chambres">Liste Chambres</a>
+            <a mat-list-item href="/create-c">Ajouter Chambre</a>
+          </mat-menu><br>
+          <a mat-button [matMenuTriggerFor]="reservations">Reservations</a>
+          <mat-menu #reservations="matMenu" style="padding-bottom: 10px;">
+            <a mat-menu-item href="/reservations">Liste Reservations</a>
+            <a mat-menu-item href="/create-r">Ajouter Reservation</a>
+          </mat-menu>
+<br>
+          <a mat-button [matMenuTriggerFor]="client">Clients</a>
+          <mat-menu #client="matMenu">
+            <a mat-menu-item href="/clients">Liste Clients</a>
+            <a mat-menu-item href="/create">Ajouter Client</a>
+          </mat-menu></div>
+          <a mat-list-item href="">Paiement</a>
+          <a mat-list-item href="/comment">Commentaires</a>
+          <a mat-list-item href="/">Site</a>
+            </mat-nav-list>
+    </div>
+  <div class="dashboard-container split-view-container right" style="margin-left: 23%;">
+    <div class="navbar-container d-flex align-content-center justify-content-center" style="background-color: rgb(240, 218, 196);">
+    <h1>Liste des Commentaires</h1></div>
+  
+      <div class="medium-12 columns">
+          <div class="d-flex align-items-center justify-content-end small" style="background-color: rgb(250, 237, 221); padding-bottom: 20px; padding-top: 20px;">
+              <a href="/manager" class="btn btn-primary">Retour au Dashboard</a>
+          </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>N° Commentaire</th>
+          <th>N° Client</th>
+          <th>Commentaire</th>
+          <th>Date de Création</th>
+          <th>Date de Mise à Jour</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comment of comments">
+          <td>{{ comment.id }}</td>
+          <td>{{ comment.idC }}</td>
+          <td>{{ comment.comment }}</td>
+          <td>{{ comment.created_at }}</td>
+          <td>{{ comment.updated_at }}</td>
+          <td class="actions">
+            <button (click)="deleteComment(comment.id)" class="w3-button w3-red">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</body>
+</html>

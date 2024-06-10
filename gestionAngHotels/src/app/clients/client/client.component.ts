@@ -1,13 +1,16 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrl: './client.component.css'
+  styleUrl: './client.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class ClientComponent  implements OnInit {
   idC: any;
@@ -19,7 +22,7 @@ export class ClientComponent  implements OnInit {
 
   reservations: any[]=[];
   
-  constructor( private http: HttpClient, private route:ActivatedRoute){}
+  constructor( private http: HttpClient, private route:ActivatedRoute, private snackBar: MatSnackBar, private router:Router){}
   title = 'gestionAngHotels';
 
   ngOnInit():void{
@@ -30,6 +33,9 @@ export class ClientComponent  implements OnInit {
     })
   }
 
+  toggleSidenav(sidenav: MatSidenav) {
+    sidenav.toggle();
+  }
   getClients(){
     this.http.get("http://localhost:8000/api/index")
     .subscribe((resultData: any)=>
@@ -63,17 +69,14 @@ export class ClientComponent  implements OnInit {
   }
   
   getReservation(id: number):void{
-    this.http.get<any>('http://localhost:8000/api/clients/${id}/reservation')
-    .subscribe((response: any)=>{
-      console.log(response);
-      if(Array.isArray(response.data)){
-        this.reservations = response.data;
+    
+      if(this.idC===1){
+        this.router.navigate(['/clientP']);
 
-      }else{
-        this.reservations=response;
+      }else if (this.idC===2){
+        this.router.navigate(['/page3']);
       }
-      // this.reservations=response;
-    })
+      
   }
 
   ajouter(): void{
@@ -93,14 +96,22 @@ export class ClientComponent  implements OnInit {
     console.log(form.value);
   }
 
-  delete(id: number): void{
-    this.http.delete('http://localhost:8000/api/delete/'+id)
-    .subscribe((resultData: any)=>{
-      console.log('client supprimé!',resultData);
-      this.getClients();
-
-    })
+  delete(id: number): void {
+    this.http.delete(`http://localhost:8000/api/clients/delete/`+id)
+      .subscribe((resultData: any) => {
+        console.log('client supprimé!', resultData);
+        this.getClients();
+        this.openSnackBar('Ce client est supprimé!')
+      }, error => {
+        console.error('Erreur de suppression:', error);
+        this.openSnackBar('Une erreur est survenue lors de la suppression du client.')
+      });
   }
   
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 10000, // Duration in milliseconds
+    });
+  }
 }
 

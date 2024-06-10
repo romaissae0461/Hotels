@@ -15,8 +15,12 @@ class ReservationService extends Model
     }
 
     public function services(){
-        return  $this->belongsToMany(Service::class, 'reservation_services', 'idReserv', 'idS');
+        return  $this->belongsToMany(Service::class, 'idS');
     }
-
+// 'reservation_services', 'idReserv',
+    public function reservation()
+    {
+        return $this->belongsToMany(Reservation::class, 'idReserv');
+    }
    
 }

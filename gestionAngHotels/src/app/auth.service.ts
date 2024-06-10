@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,25 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private user: any;
+  private clientId: string | null = null;
   constructor( private http:HttpClient, private router: Router) { }
 
+  
+ 
+  setClientId(id: string) {
+    this.clientId = id;
+    localStorage.setItem('clientId', id);
+  }
+
+  getClientId(){
+    if (!this.clientId) {
+      this.clientId = localStorage.getItem('clientId');
+    }
+    return this.clientId;
+  }
+
+  
+  
   login(credentials: any) {
     return this.http.post('http://localhost:8000/api/login', credentials)
   }
@@ -22,10 +40,16 @@ export class AuthService {
     })
   }
 
-  setUser(user:any){
-    this.user=user;
-    localStorage.setItem('user',JSON.stringify(user));
+  setUser(user: any) {
+    if (!user) {
+      console.warn('User details are undefined');
+      return;
+    }
+    
+    localStorage.setItem('user_id', user.user_id);
+    localStorage.setItem('user_email', user.email);
   }
+  
 
   getUser(){
     if(!this.user){
@@ -38,7 +62,7 @@ export class AuthService {
     return !!this.getUser().id; //!!pour convertir une valeur en boolean
   }
   getUserId(){
-    return this.getUser().idC;
+    return localStorage.getItem('userId') || '';
   }
 
 
@@ -50,4 +74,5 @@ export class AuthService {
   resetPassword(data: any) {
     return this.http.post('http://localhost:8000/api/password/reset', data);
   }
+
 }

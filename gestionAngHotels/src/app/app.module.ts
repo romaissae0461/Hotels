@@ -50,6 +50,7 @@ import { SalesTrafficChartComponent } from './charts/sales-traffic-chart/sales-t
 import { NgChartsModule } from 'ng2-charts';
 import { AnnualSalesChartComponent } from './charts/annual-sales-chart/annual-sales-chart.component';
 import { StoreSessionsChartComponent } from './charts/store-sessions-chart/store-sessions-chart.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -88,6 +89,7 @@ import { StoreSessionsChartComponent } from './charts/store-sessions-chart/store
     SalesTrafficChartComponent,
     AnnualSalesChartComponent,
     StoreSessionsChartComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

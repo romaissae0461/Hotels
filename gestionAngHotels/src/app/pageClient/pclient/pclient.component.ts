@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { AuthService } from '../../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -60,7 +62,7 @@ chambre: any;
   errorMessage: any;
   formSubmitted: boolean=false;
 
-  constructor(private http: HttpClient, private router:Router, public elementRef: ElementRef, private authService: AuthService){
+  constructor(private http: HttpClient, private router:Router, public elementRef: ElementRef, private authService: AuthService, private snackBar: MatSnackBar){
     
   }
   ngOnInit(): void {
@@ -68,7 +70,7 @@ chambre: any;
      this.showSlides();
      //this.loadMap();
      //this.checkAvailability();
-     this.idC = this.authService.getUserId();
+     this.idC = this.authService.getClientId();
     }
   
     redirectToReservation(id: number): void {
@@ -215,6 +217,7 @@ chambre: any;
   }
   
   commentaire(){
+    this.idC=1;
     let comments={
       idC:this.idC,
       comment : this.comment,
@@ -222,6 +225,15 @@ chambre: any;
     this.http.post<any>('http://localhost:8000/api/comment/add',comments)
     .subscribe((response: any)=>{
       console.log(response);
+      this.router.navigate(['/']);
+      this.openSnackBar('Commentaire ajouté avec succès');
+
     })
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 10000, // Duration in milliseconds
+    });
   }
 }

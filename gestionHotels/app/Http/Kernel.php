@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http;
-
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->command('roomstatus:update')->hourly();
+    }
     /**
      * The application's global HTTP middleware stack.
      *
