@@ -25,7 +25,7 @@
                 <div *ngFor="let chambre  of availableRooms; let i=index" [ngClass]="{'firstB': i%2==0, 'secondB': i%2!=0}">
                     <div class="d-flex align-content-between justify-content-between">
                         <div style="margin-right: 0px;">
-                                <img src="{{chambre.image}}" alt="{{chambre.numC}}" width="600px" height="400px" style="padding-top: 25px;"></div>
+                                <img [src]="'http://localhost:8000/storage/' + chambre.image" alt="{{chambre.numC}}" width="600px" height="400px" style="padding-top: 25px;"></div>
                                 <div  style="padding-right: 570px; padding-top: 80px; padding-bottom: 10%;" width="800px" height="500px">
                                 <div scope="row"><strong><p> Numéro: {{chambre.numC}} </p></strong><br>
                                     <strong>Chambre 

@@ -27,6 +27,7 @@ import { DisponibiliteComponent } from './pageClient/disponibilite/disponibilite
 import { DemandeReinitComponent } from './demande-reinit/demande-reinit.component';
 import { ReinitMDPComponent } from './reinit-mdp/reinit-mdp.component';
 import { CommentsComponent } from './comments/comments.component';
+import { Chambre1Component } from './chambre1/chambre1.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Hôtel-Del-Luna', pathMatch: 'full' },
@@ -56,7 +57,8 @@ const routes: Routes = [
   {path:'disponibilite', component:DisponibiliteComponent},
   {path:'demandeRéinitialisation', component:DemandeReinitComponent},
   {path:'réinitialisation', component:ReinitMDPComponent},
-  {path:'comment', component:CommentsComponent}
+  {path:'comment', component:CommentsComponent},
+  {path:'room', component:Chambre1Component}
 ];
 
 @NgModule({

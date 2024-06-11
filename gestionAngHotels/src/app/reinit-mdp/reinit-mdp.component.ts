@@ -6,7 +6,8 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-reinit-mdp',
   templateUrl: './reinit-mdp.component.html',
-  styleUrl: './reinit-mdp.component.css'
+  styleUrl: './reinit-mdp.component.css',
+  host: {ngSkipHydration: 'true'},
 })
 export class ReinitMDPComponent {
 
@@ -32,11 +33,11 @@ export class ReinitMDPComponent {
 
     this.passwordResetService.resetPassword(data).subscribe(
       response => {
-        this.snackBar.open('Password has been reset.', 'Close', { duration: 5000 });
+        this.snackBar.open('Mot de passe réinitialisé.', 'Close', { duration: 5000 });
         this.router.navigate(['/login']);
       },
       error => {
-        this.snackBar.open('Unable to reset password.', 'Close', { duration: 5000 });
+        this.snackBar.open('Impossible de réinitialiser le mot de passe.', 'Close', { duration: 5000 });
       }
     );
   }

@@ -10,7 +10,6 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   host: {ngSkipHydration: 'true'},
-
 })
 export class LoginComponent implements OnInit{
 

@@ -110,7 +110,7 @@ mat-card {
                  <a mat-menu-item href="/clients">Liste Clients</a>
                  <a mat-menu-item href="/create">Ajouter Client</a>
                </mat-menu>
-               <a mat-list-item href="">Paiement</a>
+               <a mat-list-item href="/confirm">Paiement</a>
                <a mat-list-item href="comment">Commentaires</a>
                <a mat-list-item href="/">Site</a>
            </mat-nav-list>
@@ -152,7 +152,9 @@ mat-card {
                             <br>
                             <small>Prix: {{chambre.prixC}} </small> <br>
                             <small>Etage: {{chambre.etage}}</small> <br>
-                            <small>Status: {{chambre.status}}</small>  <br>
+                            <small>Status: <span *ngIf="chambre.status === 0" style="color: red;">Réservée</span>
+                              <span *ngIf="chambre.status === 1" style="color: green;">Disponible</span></small>
+                           <br>
                         
                             <a href="/edit-c/{{chambre.id}}" class="btn btn-primary">Modifier</a>
                             <button class="btn btn-danger" (click)="delete(chambre.id)">Supprimer</button>

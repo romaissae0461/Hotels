@@ -61,6 +61,8 @@ typeChambre: any;
 chambre: any;
   errorMessage: any;
   formSubmitted: boolean=false;
+comments: any;
+  clients: any;
 
   constructor(private http: HttpClient, private router:Router, public elementRef: ElementRef, private authService: AuthService, private snackBar: MatSnackBar){
     
@@ -71,6 +73,8 @@ chambre: any;
      //this.loadMap();
      //this.checkAvailability();
      this.idC = this.authService.getClientId();
+     this.getComments();
+     this.getClients();
     }
   
     redirectToReservation(id: number): void {
@@ -216,6 +220,13 @@ chambre: any;
     console.log(form.value);
   }
   
+  getComments(){
+    this.http.get<any>('http://localhost:8000/api/comments')
+    .subscribe((response:any)=>{
+      console.log(response);
+      this.comments=response;
+    })
+  }
   commentaire(){
     this.idC=1;
     let comments={
@@ -226,11 +237,20 @@ chambre: any;
     .subscribe((response: any)=>{
       console.log(response);
       this.router.navigate(['/']);
-      this.openSnackBar('Commentaire ajouté avec succès');
+      this.openSnackBar('Merci pour votre commentaire');
 
     })
   }
 
+  getClients(){
+    this.http.get("http://localhost:8000/api/index")
+    .subscribe((resultData: any)=>
+    {
+      console.log(resultData);
+      this.clients = resultData;
+    })
+  }
+    
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 10000, // Duration in milliseconds

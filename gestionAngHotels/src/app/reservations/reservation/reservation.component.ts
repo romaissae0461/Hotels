@@ -26,12 +26,14 @@ export class ReservationComponent implements OnInit{
 
   clients: any;
   reservations: any;
+  chambres: any;
   constructor(private http:  HttpClient) {
 
   }
 
   ngOnInit(): void {
     this.reservation();
+    this.getChambres();
   }
 
   reservation(){
@@ -45,7 +47,14 @@ export class ReservationComponent implements OnInit{
   toggleSidenav(sidenav: MatSidenav) {
     sidenav.toggle();
   }
-  
+  getChambres(){
+    this.http.get('http://localhost:8000/api/chambres')
+    .subscribe((response: any)=>{
+      console.log(response);
+      this.chambres=response;
+    })
+  }
+
   
   
 }

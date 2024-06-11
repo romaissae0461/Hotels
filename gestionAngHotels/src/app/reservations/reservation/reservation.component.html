@@ -112,7 +112,7 @@ mat-card {
                <a mat-menu-item href="/clients">Liste Clients</a>
                <a mat-menu-item href="/create">Ajouter Client</a>
              </mat-menu></div>
-             <a mat-list-item href="">Paiement</a>
+             <a mat-list-item href="/confirm">Paiement</a>
              <a mat-list-item href="/comment">Commentaires</a>
              <a mat-list-item href="/">Site</a>
            </mat-nav-list>
@@ -166,7 +166,10 @@ mat-card {
                                 <ng-container *ngIf="client.id === reservation.idC">{{ client.nomC }} - {{client.prenom}}</ng-container>
                             </ng-container> -->
                         </td>
-                        <td>{{reservation.id}}</td>
+                        <td >
+                          <ng-container *ngFor="let chambre of chambres">
+                          <ng-container *ngIf="chambre.id === reservation.id">{{ chambre.numC }}</ng-container></ng-container>
+                          </td>
 
                     </tr>
                 </tbody>            

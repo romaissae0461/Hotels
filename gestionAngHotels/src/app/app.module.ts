@@ -51,6 +51,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { AnnualSalesChartComponent } from './charts/annual-sales-chart/annual-sales-chart.component';
 import { StoreSessionsChartComponent } from './charts/store-sessions-chart/store-sessions-chart.component';
 import { CommentsComponent } from './comments/comments.component';
+import { Chambre1Component } from './chambre1/chambre1.component';
 
 
 
@@ -90,6 +91,7 @@ import { CommentsComponent } from './comments/comments.component';
     AnnualSalesChartComponent,
     StoreSessionsChartComponent,
     CommentsComponent,
+    Chambre1Component,
   ],
   imports: [
     BrowserModule,

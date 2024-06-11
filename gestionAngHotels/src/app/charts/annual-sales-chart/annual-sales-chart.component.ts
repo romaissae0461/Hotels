@@ -10,11 +10,11 @@ export class AnnualSalesChartComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: string[] = ['2019', '2020', '2021', '2022'];
+  public barChartLabels: string[] = ['2019', '2020', '2021', '2022', '2023', '2024'];
   public barChartType: ChartType = 'line';
 
   public barChartData: ChartDataset<'line'>[] = [
-    { data: [40000, 38000, 50000, 55000], label: 'Revenu Annuel' }
+    { data: [40000, 38000, 50000, 55000,56050], label: 'Revenu Annuel' }
   ];;
 
   constructor() { }

@@ -25,11 +25,77 @@
     border-radius: 50px;
     transition: all 0.4s;
         }
-        #map {
-      height: 542px;
-      width: 95%;
-      }
+        #map-placeholder {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  background-color: #e0e0e0; /* Light grey background */
+  border: 1px solid #ccc; /* Light grey border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666; /* Text color */
+  font-size: 20px; /* Text size */
+}
+
+#map-placeholder::before {
+  content: "Map Placeholder";
+}
     
+      /* comments.component.css */
+
+.comments-section {
+  margin: 40px 5%;
+  background-color: burlywood;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.comments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.comment {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.comment-text {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #555;
+}
+
+.firstB{
+        background-color: white;
+    }
+    .secondB{
+        background-color: rgb(248, 233, 214);
+    }
+
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+
+
+.username {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  color: #333;
+}
+
         </style>
                     
     </head>
@@ -45,7 +111,7 @@
             <a href="/services" class="w3-bar-item w3-button w3-mobile">Services</a>
             <a href="/plans" class="w3-bar-item w3-button w3-mobile">Bons Plans</a>
             <a href="/contact/client" class="w3-bar-item w3-button w3-mobile">Contact</a>
-            <a href="" (click)="logout()" class="w3-bar-item w3-button w3-mobile">Log out</a>
+            <a href="/login" class="w3-bar-item w3-button w3-mobile">Log out</a>
         </div>
             <a href="/createReserv" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">Réserver</a>
         
@@ -257,15 +323,40 @@
             </div>
             
             <div class="w3-col l8 12">
-                <!-- <div id="map"></div>         -->
+                <!-- <div id="map-placeholder" style="height: 543px;"></div>         -->
+                <iframe 
+                src="https://www.google.com/maps/d/embed?mid=1EWWUh00fKVQZ1O91Qyy9qCh-7x1_lqA&ehbc=2E312F"
+                width="100%"
+                height="542" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
             </div>
         </div>
     </section>
 
-
+    <section>
+        <div class="comments-section">
+          <h2>Commentaires des clients</h2>
+          <div class="comments-grid">
+          <div *ngFor="let comment of comments; let i = index" [ngClass]="{'firstB': i % 2 == 0, 'secondB': i % 2 != 0}" class="comment">
+            <div class="comment-header">
+              <p class="username">
+                <ng-container *ngFor="let client of clients">
+                  <ng-container *ngIf="client.idC === comment.idC"><strong>{{ client.nomC }} {{client.prenom}}</strong></ng-container>
+                </ng-container>
+              </p>
+            </div>
+            <p class="comment-text">{{comment.comment}}</p>
+          </div>
+          </div>
+        </div>
+      </section>
+      
     <!-- Comments -->
     <section>
-        <div class="w3-row-padding" id="comment" style="background-color: rgb(241, 224, 202);padding-top: 40px; padding-bottom: 2%;">
+        <div class="w3-row-padding" id="comment" style="background-color: rgb(241, 224, 202);padding-top: 40px; padding-bottom: 2%; margin-bottom: 0px;">
         <div class="w3-col l4 12">
             <h1 style="margin-left: 20%; font-size: 35px; font-style: oblique;">Aidez-nous à améliorer notre site</h1>
             <input name="comments" type="text" [(ngModel)]="comment" placeholder="Ajoutez un commentaire.." style="min-width: 500px; max-width: 100%; width: 500px; min-height: 50px; height: 150px; margin-left: 25%; margin-top: 5%; background-color: rgb(247, 218, 180);"><br>

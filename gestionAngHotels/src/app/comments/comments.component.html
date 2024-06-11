@@ -72,7 +72,7 @@
             <a mat-menu-item href="/clients">Liste Clients</a>
             <a mat-menu-item href="/create">Ajouter Client</a>
           </mat-menu></div>
-          <a mat-list-item href="">Paiement</a>
+          <a mat-list-item href="/confirm">Paiement</a>
           <a mat-list-item href="/comment">Commentaires</a>
           <a mat-list-item href="/">Site</a>
             </mat-nav-list>
@@ -92,7 +92,6 @@
           <th>N° Client</th>
           <th>Commentaire</th>
           <th>Date de Création</th>
-          <th>Date de Mise à Jour</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -102,7 +101,6 @@
           <td>{{ comment.idC }}</td>
           <td>{{ comment.comment }}</td>
           <td>{{ comment.created_at }}</td>
-          <td>{{ comment.updated_at }}</td>
           <td class="actions">
             <button (click)="deleteComment(comment.id)" class="w3-button w3-red">Supprimer</button>
           </td>
